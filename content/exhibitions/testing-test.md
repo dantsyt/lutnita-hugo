@@ -1,3 +1,4 @@
+---
 title: Testing Test
 type: exhibition
 layout: page
@@ -30,3 +31,4 @@ params:
     artistname:
       - firstname: Cms
         lastname: Test
+---
