@@ -9,7 +9,7 @@ params:
     body: full_body
     main: full_main
   scripts:
-    - script: oneExhib.js
+    - oneExhib.js
   isModule: true
   data:
     namepath:
