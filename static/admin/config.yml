@@ -1,0 +1,65 @@
+site_url: https://lutnita-hugo.pages.dev
+display_url: https://lutnita-hugo.pages.dev
+publish_mode: editorial_workflow
+show_preview_links: true
+backend:
+  name: github
+  repo: dantsyt/lutnita-hugo
+  branch: main
+  base_url: https://lutnita-hugo.pages.dev
+  auth_endpoint: /api/auth
+  squash_merges: true
+  preview_context: 'cloudflare preview deploy'
+media_folder: "static/pdf"
+public_folder: "/pdf"
+collections:
+  - name: "exhibitions"
+    label: "Exhibitions"
+    folder: "content/exhibitions"
+    create: true
+    slug: "{{slug}}"
+    format: "yaml"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "type", label: "Type", widget: "hidden", default: "exhibition" }
+      - { name: "layout", label: "Layout", widget: "hidden", default: "page" }
+      - { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", default: "" }
+      - name: "params"
+        label: "Parameters"
+        widget: "object"
+        fields:
+          - name: "class"
+            label: "CSS Classes"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { name: "html", label: "HTML", widget: "string", default: "full_height" }
+              - { name: "body", label: "Body", widget: "string", default: "full_body" }
+              - { name: "main", label: "Main", widget: "string", default: "full_main" }
+          - name: "scripts"
+            label: "Scripts"
+            widget: "list"
+            field: { name: "script", label: "Script", widget: "string", default: "oneExhib.js" }
+          - { name: "isModule", label: "Is Module?", widget: "boolean", default: true }
+          - name: "data"
+            label: "Data"
+            widget: "object"
+            fields:
+              - { name: "exhibname", label: "Exhibition Name", widget: "string" }
+              - name: "artistname"
+                label: "Artists"
+                widget: "list"
+                summary: "{{fields.firstname}} {{fields.lastname}}"
+                fields:
+                  - { name: "firstname", label: "First Name", widget: "string" }
+                  - { name: "lastname", label: "Last Name", widget: "string" }
+              - name: "namepath"
+                label: "Namepath (SVGs)"
+                widget: "list"
+                field: { name: "file", label: "File", widget: "string", default: ".svg" }
+              - { name: "date", label: "Exhibition date", widget: "string", default: "start — end" }
+              - { name: "images", label: "Image Count", widget: "number", default: 0, value_type: "int" }
+              - name: "captions"
+                label: "Captions"
+                widget: "list"
+                field: { name: "caption", label: "Caption", widget: "text", default: "\"caption\"" }

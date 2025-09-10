@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Netlify CMS -->
+    <script src="https://unpkg.com/decap-cms@3.4.0/dist/decap-cms.js"></script>
+    <script type="module">
+      import Markdown from 'https://esm.sh/react-markdown@9?bundle'
+      
+      var PostPreview = createClass({
+        render: function() {
+          if (this.props.widgetFor('body') != null) {
+            return Markdown({
+              children: this.props.widgetFor('body').props.value
+            });
+          } else {
+            return '';
+          }
+        }
+      });
+      CMS.registerPreviewTemplate("articles", PostPreview);
+      CMS.registerPreviewStyle("/admin/preview.css");
+    </script>  
+  </body>
+</html>
