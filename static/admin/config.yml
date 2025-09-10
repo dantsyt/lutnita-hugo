@@ -13,8 +13,8 @@ backend:
 media_folder: "static/pdf"
 public_folder: "/pdf"
 collections:
-  - name: "exhibitions"
-    label: "Exhibitions"
+  - name: "exhibition"
+    label: "Exhibition"
     folder: "content/exhibitions"
     create: true
     slug: "{{slug}}"
