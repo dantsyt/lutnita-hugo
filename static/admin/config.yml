@@ -1,0 +1,25 @@
+site_url: https://lutnita-hugo.pages.dev
+display_url: https://lutnita-hugo.pages.dev
+publish_mode: editorial_workflow
+show_preview_links: true
+backend:
+  name: github
+  repo: dantsyt/lutnita-hugo
+  branch: main
+  base_url: https://lutnita-hugo.pages.dev
+  auth_endpoint: /api/auth
+  squash_merges: true
+  preview_context: 'cloudflare preview deploy'
+media_folder: "static/pdf"
+public_folder: "/pdf"
+collections:
+  - name: exhibitions
+    label: Exhibitions
+    folder: "content/exhibitions"
+    create: true
+    slug: "{{slug}}"
+    preview_path: '{{slug}}'
+    editor:
+      preview: true
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
