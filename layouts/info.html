@@ -1,0 +1,60 @@
+{{- define "main" }}
+  {{- $assetUrl := .Site.Params.assetUrl }}
+  <section id="text_section" class="text_section">
+    <h2 class="title">{{ .Title }}</h2>
+    <div id="text_container" class="text_container_nohover text_container_info">
+      <div class="info_wrapper">
+      {{- if eq .Title "Info" }}
+        {{- $locations := .Resources.Match "location*.md" -}}
+        {{ range sort $locations "Weight" "asc" }}
+        <div class="info_md_text">
+          {{ .Content | replaceRE "\n" "<br>" | safeHTML -}}
+        </div>            
+        {{- end }}
+        {{- $contacts := .Resources.GetMatch "contacts.md" -}}
+        {{ with $contacts }}
+          {{ .Content | replaceRE "\n" "<br>" | safeHTML -}}
+        {{ end }}
+        <br class="team_wrapper">
+        <p id="team_button"><a href="/team">Team</a></p>
+        <br>
+      {{- else -}}
+        <div>
+        {{- $team := .Params.team }}
+        {{- range $team }}
+          <div class="team">
+            <p class="team_name">{{ .name }}</p>
+            <p class="team_role">{{ .role }}</p>
+            <p class="team_email"><a href="mailto:{{ .mail }}">{{ .mail }}</a></p>
+          </div>
+          <br>
+        {{- end }}
+        </div>
+      {{ end -}}
+      </div>
+    </div>
+  </section>
+  {{- if eq .Title "Info" }}
+  <section class="image_container one_exhib icinfo_text_center">
+    {{- $description := .Resources.GetMatch "description.md" -}}
+    {{ with $description }}
+    <div id="info" class="info_md_text info">
+      {{ .Content | replaceRE "\n" "<br>" | safeHTML }}
+    </div>
+    <div id="info_mob" class="info_md_text info_mob">
+      {{ .Content | replaceRE "\n" "<br>" | safeHTML }}
+    </div>
+    {{- end }}
+  </section>
+  {{- else }}
+  <section class="image_container">
+    <img class="center_image_exhib" src="{{ $assetUrl }}/img/blank.svg"
+        alt="center_image">
+  </section>
+  {{- end }}
+  <section class="right_space"></section>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ partial "assets/js" . }}
+{{ end }}

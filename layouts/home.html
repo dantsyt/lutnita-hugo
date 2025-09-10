@@ -1,0 +1,40 @@
+{{- define "main" }}
+  {{- $assetUrl := .Site.Params.assetUrl }}
+  {{- $data := .Params.data }}
+  {{- $first := index $data 0 }}
+  <section id="text_section" class="text_section">
+    <h2 class="title">{{ .Params.subtitle }}</h2>
+    {{- range $i, $d := $data }}
+    <div class="text_container_nohover tc_index" onclick="location.assign('/exhibitions/{{ .exhibname }}')">
+      {{- if eq $i 0 }}
+      <div class="names_wrapper">
+        {{- $name := .namepath }}
+        {{- range $name }}
+        <div class="names_container">
+          <img class="artist_name"
+              src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
+        </div>
+        {{- end }}
+      </div>
+      {{- end }}
+      <div class="vols_wrapper">
+        <h3 class="vol">{{ .text }}</h3>
+        <h4 class="exhibition_date">{{ .date }}</h4>
+        <h3 class="loc">{{ .loc }}</h3>
+      </div>
+      <div class="image_container_mob_index">
+        <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ .image }}" alt="center_image" onclick="location.assign('/exhibitions/{{ .exhibname }}')">
+      </div>
+    </div>
+    {{- end }}
+  </section>
+  <section class="image_container"><img class="center_image_index"
+        src="{{ $assetUrl }}/img/exhibitions/{{ $first.image }}" alt="center_image"
+        onclick="location.assign('/exhibitions/{{ $first.exhibname }}')">
+  </section>
+  <section class="right_space"></section>
+{{ end -}}
+
+{{- define "scripts" -}}
+  {{- partial "assets/js" . }}
+{{- end -}}

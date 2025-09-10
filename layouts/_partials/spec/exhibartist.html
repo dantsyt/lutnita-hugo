@@ -1,0 +1,9 @@
+{{- $exhibdata := index . "exhibdata" }}
+{{- $artistname := index . "artistname" }}
+{{- $exhibname := $exhibdata.exhibname }}
+{{- if eq $exhibname $artistname }}
+        <div id="{{ index . "id" }}" class="{{ index . "class" }}" onclick="location.assign('/exhibitions/{{ $exhibname }}')">
+            <h6 class="exhib_link_text">Exhibition</h6>
+            <h4 id="artist_exhib_date" class="exhibition_date">{{ $exhibdata.date }}</h4>
+        </div>
+{{- end }}

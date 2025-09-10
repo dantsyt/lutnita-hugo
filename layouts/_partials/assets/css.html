@@ -1,0 +1,17 @@
+{{- $css := slice
+    (resources.Get "css/normalize.css")
+    (resources.Get "css/reset.css")
+    (resources.Get "css/typography.css")
+    (resources.Get "css/styles.css")
+    (resources.Get "css/media-ppi.css")
+    (resources.Get "css/media-phones.css")
+    (resources.Get "css/media-tablets.css")
+  | resources.Concat "css/bundle.css"
+-}}
+
+{{- if hugo.IsDevelopment -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{- else -}}
+  {{ $prod := $css | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $prod.RelPermalink }}" integrity="{{ $prod.Data.Integrity }}" crossorigin="anonymous">
+{{- end -}}

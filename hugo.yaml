@@ -1,0 +1,8 @@
+baseURL: 'https://example.org/'
+languageCode: 'en-us'
+title: 'L U T N I Ț A'
+
+disableKinds: ["taxonomy"]
+
+params:
+  assetUrl: 'https://d23fd8t3cgh0wq.cloudfront.net'

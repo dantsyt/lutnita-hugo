@@ -1,0 +1,29 @@
+{{- define "main" }}
+    {{- $assetUrl := .Site.Params.assetUrl }}
+    <section id="text_section_artists" class="text_section text_section_artists">
+        <h2 id="title" class="title">{{ .Title }}</h2>
+        <div id="list_wrapper">
+            <div id="artist_list">
+            {{- range .Pages }}
+            {{ $data := .Params.data }}
+                <div id="{{ $data.fullname }}" class="text_container text_container_artists" onclick="location.assign('/artists/{{ $data.fullname }}')">
+                    <p id="{{ $data.fullname }}" class="exhnamehidden"></p>
+                    <div class="names_wrapper">
+                        <div class="names_container">
+                            <img class="artist_name" src="{{ $assetUrl }}/img/artists/namepaths/{{ $data.namepath }}">
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+            </div>
+        </div>
+    </section>
+    <section class="image_container"><img class="center_image_exhib"
+            src="{{ $assetUrl }}/img/blank.svg" alt="center_image">
+    </section>
+    <section class="right_space"></section>
+{{ end }}
+
+{{ define "scripts" }}
+    {{ partial "assets/js" . }}
+{{ end }}

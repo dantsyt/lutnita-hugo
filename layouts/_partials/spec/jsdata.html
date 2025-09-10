@@ -1,0 +1,38 @@
+{{- $assetUrl := index . "assetUrl" }}
+{{- $data := index . "data" }}
+{{- $script := index . "script" }}
+{{- $isOne := index . "isOne" }}
+{{- $isIndexVols := index . "isIndexVols" }}
+{{- $isExhib := eq $script "oneExhib.js" }}
+{{- $isArtist := eq $script "oneArtist.js" }}
+    <script>
+        window.exhibitionData = {
+{{- if $isOne }}
+{{- $imgPath := cond ($isExhib) (printf "exhibitions/%s" $data.exhibname) (printf "artists/%s" $data.fullname) }}
+{{- $arr := cond (and ($isArtist) (eq $data.fullname "annagodzina")) $data.imagenames (seq $data.images) }}
+{{- if and ($isArtist) (not (eq $data.fullname "annagodzina")) }}
+    {{- $arr = slice }}
+    {{- range seq $data.images }}
+        {{- $arr = $arr | append (printf "%d.webp" .) }}
+    {{- end }}
+{{- end }}
+{{- $arrMob := cond (eq $data.fullname "annagodzina") $data.imagenamesMob (seq $data.images) }}
+{{- if and ($isArtist) (not (eq $data.fullname "annagodzina")) }}
+    {{- $arrMob = slice }}
+    {{- range seq $data.images }}
+        {{- $arrMob = $arrMob | append (printf "%d_450px.webp" .) }}
+    {{- end }}
+{{- end }}
+            total: {{ $data.images -}},
+            arr: {{ $arr }},
+            {{ if $isArtist }}arrMob: {{ $arrMob }},{{ end }}
+            imgDir : {{ printf "%s/img/%s" $assetUrl $imgPath }},
+            captionsArr : {{ $data.captions }}
+{{- else if $isIndexVols }}
+            assetUrl: {{ $assetUrl }},
+            exhibs: {{- $data | len -}},
+            exhibnames: [{{- range $i, $d := $data -}}{{- if $i -}}, {{- end -}}{{- $d.exhibname -}}{{- end -}}],
+            images: [{{- range $i, $d := $data -}}{{- if $i -}}, {{- end -}}{{- $d.image -}}{{- end -}}]
+{{- end }}
+        };
+    </script>

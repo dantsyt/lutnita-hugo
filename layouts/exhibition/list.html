@@ -1,0 +1,34 @@
+{{- define "main" }}
+    {{- $assetUrl := .Site.Params.assetUrl }}
+    <section id="text_section" class="text_section">
+        <h2 id="title" class="title">{{ .Title }}</h2>
+        {{- range .Pages }}
+        {{- $data := .Params.data }}
+        <div id="{{ $data.exhibname }}" class="text_container" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+            <p id="{{ $data.exhibname }}" class="exhnamehidden"></p>
+            <div class="names_wrapper">
+                {{- $name := $data.namepath }}
+                {{- $first := index $name 0 }}
+                {{- $toShow := cond (eq $first "vbmmrdngmr.svg") (slice $first) $name }}
+                {{- range $toShow }}
+                <div class="names_container">
+                    <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
+                </div>
+                {{- end }}
+            </div>
+            <h4 class="exhibition_date">{{ $data.date }}</h4>
+            </div>
+            <div class="image_container_mob">
+            <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.exhibname }}.webp" alt="center_image" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+            </div>
+        {{- end }}
+    </section>
+    <section class="image_container"><img class="center_image_exhib"
+            src="{{ $assetUrl }}/img/exhibitions/{{ range first 1 .Pages }}{{ .Params.data.exhibname }}{{ end }}.webp" alt="center_image">
+    </section>
+    <section class="right_space"></section>
+{{ end }}
+
+{{ define "scripts" }}
+    {{ partial "assets/js" . }}
+{{ end }}

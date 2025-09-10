@@ -1,0 +1,19 @@
+{{- range .Params.scripts }}
+  {{- $script := . -}}
+  {{- $isModule := default "" $.Params.isModule -}}
+  {{- $isOne := eq $script "oneExhib.js" "oneArtist.js" -}}
+  {{- $isIndexVols := eq $script "index_vols.js" -}}
+  {{- $opts := dict "minify" (not hugo.IsDevelopment) "sourceMap" (cond hugo.IsDevelopment "external" "") "targetPath" (printf "js/%s" .) "target" "es2020" }}
+  {{- with resources.Get (printf "js/%s" .) | js.Build $opts }}
+    {{- if or $isOne $isIndexVols -}}
+      {{ partial "spec/jsdata.html" (dict "assetUrl" $.Site.Params.assetUrl "data" $.Params.data "isOne" $isOne "script" $script "isIndexVols" $isIndexVols) }}
+    {{- end }}
+    {{- if hugo.IsDevelopment }}
+      <script {{ if $isModule }}type="module"{{ end }} src="{{ .RelPermalink }}"></script>
+    {{- else -}}
+      {{- with . | fingerprint -}}
+        <script {{ if $isModule }}type="module"{{ end }} src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}

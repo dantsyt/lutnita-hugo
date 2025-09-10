@@ -1,0 +1,41 @@
+{{ define "main" }}
+    {{- $assetUrl := .Site.Params.assetUrl }}
+    {{- $data := .Params.data }}
+    {{- $artistname := $data.fullname }}
+    {{- $namepath := $data.namepath }}
+    {{- $captionsArr := $data.captions }}
+    {{- $countTotal := $data.images }}
+    {{- $imgDir := printf "%s/img/artists/%s" $assetUrl $artistname }}
+    {{- $imgDirMob := printf "%s/img/artists/%s/mob" $assetUrl $artistname }}
+    <section id="text_section" class="text_section">
+        <h2 id="title" class="title title_menu">&#9776;</h2>
+        <div id="{{ $artistname }}" class="text_container_nohover">
+            <div class="names_wrapper"><div class="names_container">
+            <img class="artist_name" src="{{ $assetUrl }}/img/artists/namepaths/{{ $namepath }}"></div></div>
+            <h6 class="pdf_mob"><a href="/pdf/bio/{{ $artistname }}.pdf" target="_blank">bio</a></h6>
+        </div>
+        {{- range where site.RegularPages "Section" "exhibitions" }}
+            {{- partial "spec/exhibartist.html" (dict "artistname" $artistname "exhibdata" .Params.data "id" "exhib_link_mob" "class" "exhib_link exhib_link_mob") }}
+        {{- end }}
+        <div class="img_counter">
+            <p id="counter_text" class="counters">Works</p>
+            <p class="counters"><span id="counter_num"> 1</span>/<span id="counter_total">{{ $countTotal}}</span></p>
+        </div>
+        <h6 class="pdf"><a href="/pdf/bio/{{ $artistname }}.pdf" target="_blank">bio</a></h6>
+        {{- range where site.RegularPages "Section" "exhibitions" }}
+            {{- partial "spec/exhibartist.html" (dict "artistname" $artistname "exhibdata" .Params.data "id" "exhib_link" "class" "exhib_link") }}
+        {{- end }}
+    </section>
+    <section class="image_container one_exhib">
+        <img id="main_image" class="center_image_exhib center_image_one_exhib" src="{{ $imgDir }}/1.webp" alt="center_image">
+        <div class="image_container_mob_one">
+            <img class="center_image_mob mob_one_exhib" src="{{ $imgDirMob }}/1_450px.webp" alt="center_image">
+        </div>
+        <p id="captions_desk" class="captions">{{ range first 1 $captionsArr }}{{ . }}{{ end }}</p>
+    </section>
+    <section class="right_space gallery"></section>
+{{ end }}
+
+{{ define "scripts" }}
+    {{ partial "assets/js" . }}
+{{ end }}
