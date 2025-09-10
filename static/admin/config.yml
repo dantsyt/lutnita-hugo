@@ -18,7 +18,6 @@ collections:
     folder: "content/exhibitions"
     create: true
     slug: "{{slug}}"
-    format: "yaml"
     fields:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "type", label: "Type", widget: "hidden", default: "exhibition" }
@@ -39,7 +38,7 @@ collections:
           - name: "scripts"
             label: "Scripts"
             widget: "list"
-            field: { name: "script", label: "Script", widget: "string", default: "oneExhib.js" }
+            field: { label: "Script", widget: "string", default: "oneExhib.js" }
           - { name: "isModule", label: "Is Module?", widget: "boolean", default: true }
           - name: "data"
             label: "Data"
@@ -56,7 +55,7 @@ collections:
               - name: "namepath"
                 label: "Namepath (SVGs)"
                 widget: "list"
-                field: { name: "file", label: "File", widget: "string", default: ".svg" }
+                field: { label: "File", widget: "string", default: ".svg" }
               - { name: "date", label: "Exhibition date", widget: "string", default: "start — end" }
               - { name: "images", label: "Image Count", widget: "number", default: 0, value_type: "int" }
               - name: "captions"
