@@ -12,6 +12,6 @@ for (let name of names) {
     })
 }
 if (document.querySelector('#winter')) {
-    const emptyContainer = document.querySelector('#winter').childNodes[3].children
+    const emptyContainer = document.querySelector('#winter > div.names_wrapper').children
     emptyContainer[7].id = 'empty_w'
 }
