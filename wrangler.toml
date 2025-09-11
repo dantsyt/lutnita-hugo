@@ -6,4 +6,5 @@ command = "chmod a+x build.sh && ./build.sh"
 
 [assets]
 directory = "./public"
+html_handling = "force-trailing-slash"
 not_found_handling = "404-page"
