@@ -16,7 +16,7 @@ params:
     lastname: godzina
     fullname: annagodzina
     namepath: godzina.svg
-    images: 0
+    images: 22
     imagenames:
       - 1.webp
       - 2.webp
