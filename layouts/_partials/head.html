@@ -9,10 +9,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="CrnLrYm_vMIX2iYF9P-pUM09zow-cDlAp5Gq01FN7i8" />
-<meta property="og:title" content="L U T N I T A">
+<meta property="og:title" content="{{ if .IsHome }}
+        {{- printf "%s | %s" site.Title .Title -}}
+    {{ else if eq .Params.layout "page" }}
+        {{- printf "%s | %ss | %s" .Title (.Type | title) site.Title -}}
+    {{ else }}
+        {{- printf "%s | %s" .Title site.Title -}}
+    {{ end }}">
+<meta property="og:site_name" content="L U T N I Ț A">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://images2.imgbox.com/2e/f2/CDx8ZuF3_o.png">
-<meta name="description" content="LUTNIȚA Gallery | Home">
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <link rel="image_src" href="https://images2.imgbox.com/2e/f2/CDx8ZuF3_o.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
