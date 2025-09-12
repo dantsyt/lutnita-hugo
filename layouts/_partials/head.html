@@ -23,7 +23,8 @@
 {{- else if eq .Title "Artists" }}
     {{- $names := slice -}}
     {{- range .Pages }}
-        {{- $names = $names | append (printf "%s %s" (.Params.data.firstname | title) (.Params.data.lastname | title)) -}}
+        {{- $artistName := partial "spec/artistnames.html" (dict "artistNameSource" .Params.data.artistname) }}
+        {{- $names = $names | append $artistName -}}
     {{- end }}
     {{- $desc = printf "Artists · %s" (delimit $names " · ") -}}
 {{- else if (and .IsPage (eq .Type "exhibition")) }}
@@ -32,7 +33,8 @@
         {{- $names = $names | append (printf "%s %s" .firstname .lastname) }}
     {{- end }}
     {{- $artistNames := delimit $names ", " }}
-    {{- $desc = printf "Exhibition: %s · %s · %s" .Title .Params.data.date $artistNames -}}
+    {{- $descNames := cond (ne .Title $artistNames) $artistNames "" }}
+    {{- $desc = printf "Exhibition: %s · %s · %s" .Title .Params.data.date $descNames -}}
 {{- else if (and .IsPage (eq .Type "artist")) }}
     {{- $desc = printf "Artist: %s · Bio, selected works" .Title -}}
 {{- end -}}
