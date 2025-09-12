@@ -12,8 +12,9 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    firstname: mihail
-    lastname: șarpe
+    artistname:
+      - firstname: mihail
+        lastname: șarpe
     fullname:  mihailsarpe
     namepath: sarpe.svg
     images: 28

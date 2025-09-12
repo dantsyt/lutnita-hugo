@@ -12,8 +12,9 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    firstname: diana
-    lastname: cepleanu
+    artistname:
+      - firstname: diana
+        lastname: cepleanu
     fullname: dianacepleanu
     namepath: cepleanu.svg
     images: 19

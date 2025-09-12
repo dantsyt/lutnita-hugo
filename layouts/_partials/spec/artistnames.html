@@ -1,0 +1,7 @@
+{{- $temp := slice }}
+{{- $artistNameSource := index . "artistNameSource" }}
+{{- range $artistNameSource }}
+  {{- $temp = $temp | append (printf "%s %s" (.firstname | title) (.lastname | title)) }}
+{{- end }}
+{{- $artistNames := delimit $temp ", " }}
+{{- return $artistNames }}

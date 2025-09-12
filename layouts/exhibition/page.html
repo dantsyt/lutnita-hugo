@@ -6,6 +6,7 @@
     {{- $countTotal := $data.images }}
     {{- $imgDir := printf "%s/img/exhibitions/%s" $assetUrl $exhibname }}
     {{- $imgDirMob := printf "%s/img/exhibitions/%s/mob" $assetUrl $exhibname }}
+    {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
     <section id="text_section" class="text_section">
         <h2 id="title" class="title title_menu">&#9776;</h2>
         <div id="{{ $exhibname }}" class="text_container_nohover">
@@ -30,9 +31,9 @@
     </section>
     <section class="image_container one_exhib">
         <div id="space_image" class="space_image"></div>
-            <img id="main_image" class="center_image_exhib center_image_one_exhib inverted" src="{{ $imgDir }}/1.webp" alt="center_image">
+            <img id="main_image" class="center_image_exhib center_image_one_exhib inverted" src="{{ $imgDir }}/1.webp" alt="{{ $artistNames }}">
         <div class="image_container_mob_one">
-            <img class="center_image_mob mob_one_exhib inverted" src="{{ $imgDirMob }}/1_450px.webp" alt="center_image">
+            <img class="center_image_mob mob_one_exhib inverted" src="{{ $imgDirMob }}/1_450px.webp" alt="{{ $artistNames }}">
         </div>
         <p id="captions_desk" class="captions">{{ range first 1 $captionsArr }}{{ . }}{{ end }}</p>
     </section>

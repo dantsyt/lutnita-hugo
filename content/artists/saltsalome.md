@@ -12,8 +12,9 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    firstname: salt
-    lastname: salome
+    artistname:
+      - firstname: salt
+        lastname: salome
     fullname: saltsalome
     namepath: salome.svg
     images: 23

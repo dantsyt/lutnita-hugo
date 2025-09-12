@@ -12,17 +12,12 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    firstname: mark
-    lastname: verlan
+    artistname:
+      - firstname: mark
+        lastname: verlan
     fullname: markverlan
     namepath: verlan.svg
     images: 27
-    imagenames:
-      - 1.webp
-      - 2.webp
-    imagenamesMob:
-      - 1_450px.webp
-      - 2_450px.webp
     captions:
       - |
         The Potato Digger

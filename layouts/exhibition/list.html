@@ -4,6 +4,7 @@
         <h2 id="title" class="title">{{ .Title }}</h2>
         {{- range .Pages }}
         {{- $data := .Params.data }}
+        {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
         <div id="{{ $data.exhibname }}" class="text_container" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
             <p id="{{ $data.exhibname }}" class="exhnamehidden"></p>
             <div class="names_wrapper">
@@ -19,12 +20,15 @@
             <h4 class="exhibition_date">{{ $data.date }}</h4>
             </div>
             <div class="image_container_mob">
-            <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.exhibname }}.webp" alt="center_image" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+            <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.exhibname }}.webp" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
             </div>
         {{- end }}
     </section>
+    {{- $firstpage := index .Pages 0 }}
+    {{- $exhibname := $firstpage.Params.data.exhibname }}
+    {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $firstpage.Params.data.artistname) }}
     <section class="image_container"><img class="center_image_exhib"
-            src="{{ $assetUrl }}/img/exhibitions/{{ range first 1 .Pages }}{{ .Params.data.exhibname }}{{ end }}.webp" alt="center_image" onclick="location.assign('/exhibitions/{{ range first 1 .Pages }}{{ .Params.data.exhibname }}{{ end }}')">
+            src="{{ $assetUrl }}/img/exhibitions/{{ $exhibname }}.webp" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $exhibname }}')">
     </section>
     <section class="right_space"></section>
 {{ end }}

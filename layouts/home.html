@@ -2,11 +2,7 @@
   {{- $assetUrl := .Site.Params.assetUrl }}
   {{- $data := .Params.data }}
   {{- $first := index $data 0 }}
-  {{- $tempSlice := slice }}
-  {{- range $first.artistname }}
-    {{- $tempSlice = $tempSlice | append (printf "%s %s" .firstname .lastname) }}
-  {{- end }}
-  {{- $artistNames := delimit $tempSlice ", " }}
+  {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $first.artistname) }}
   <section id="text_section" class="text_section">
     <h2 class="title">{{ .Params.subtitle }}</h2>
     {{- range $i, $d := $data }}
