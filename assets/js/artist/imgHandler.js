@@ -2,6 +2,7 @@ import { imgArr, imgArrMob, imgDir, imgDirMob, captions, captionsArr, artistId }
 import { mob, image } from "./mob"
 import { preloadNextMedia, preloadPrevMedia } from "./imgPreload"
 import { sendLog } from "./log"
+import { detectSwipe } from "./swipe"
 
 const viewsCount = document.querySelector('#counter_num')
 
