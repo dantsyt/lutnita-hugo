@@ -2,6 +2,7 @@
 date: '2025-08-23T14:09:06+03:00'
 title: Team
 layout: info
+description: 'Andrei Sclifos · Alisa Bakalova · Olivia Furtună · Constantin Coada · Nichita Prepeliță · Lucian Spătaru'
 params:
   class:
     html: full_height

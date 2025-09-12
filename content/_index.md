@@ -1,6 +1,7 @@
 ---
 date: '2025-08-23T14:09:06+03:00'
 title: Home
+description: 'Upcoming exhibition: Pavel Brăila · Vol. I, 26 Sep 2025 — 16 Nov 2025, Chișinău · Vol. II, 11 Oct 2025 — 16 Nov 2025, Ustia'
 params:
   subtitle: Upcoming
   class:

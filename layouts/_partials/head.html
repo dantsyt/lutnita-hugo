@@ -1,25 +1,50 @@
-<title>{{ if .IsHome }}
-        {{- printf "%s | %s" site.Title .Title -}}
-    {{ else if eq .Params.layout "page" }}
-        {{- printf "%s | %ss | %s" .Title (.Type | title) site.Title -}}
-    {{ else }}
-        {{- printf "%s | %s" .Title site.Title -}}
-    {{ end }}</title>
+{{- /* Start --- TITLE --- */ -}}
+{{- $title := "" }}
+{{- if .IsHome }}
+    {{- $title = printf "%s | %s" site.Title .Title -}}
+{{- else if eq .Params.layout "page" }}
+    {{- $title = printf "%s | %ss | %s" .Title (.Type | title) site.Title -}}
+{{- else }}
+    {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+{{- /* End --- TITLE --- */ -}}
+{{- /* Start --- DESCRIPTION --- */ -}}
+{{- $desc := "" -}}
+{{- if .Params.description }}
+    {{- $desc = .Params.description -}}
+{{- else if eq .Title "Exhibitions" }}
+    {{- $dates := slice -}}
+    {{- range .Pages }}
+        {{- $dates = $dates | append .Params.data.date -}}
+    {{- end }}
+    {{- $desc = printf "Exhibitions · %s" (delimit $dates " · ") -}}
+{{- else if eq .Title "Artists" }}
+    {{- $names := slice -}}
+    {{- range .Pages }}
+        {{- $names = $names | append (printf "%s %s" (.Params.data.firstname | title) (.Params.data.lastname | title)) -}}
+    {{- end }}
+    {{- $desc = printf "Artists · %s" (delimit $names " · ") -}}
+{{- else if (and .IsPage (eq .Type "exhibition")) }}
+    {{- $names := slice }}
+    {{- range .Params.data.artistname }}
+        {{- $names = $names | append (printf "%s %s" .firstname .lastname) }}
+    {{- end }}
+    {{- $artistNames := delimit $names ", " }}
+    {{- $desc = printf "Exhibition: %s · %s · %s" .Title .Params.data.date $artistNames -}}
+{{- else if (and .IsPage (eq .Type "artist")) }}
+    {{- $desc = printf "Artist: %s · Bio, selected works" .Title -}}
+{{- end -}}
+{{- /* End --- DESCRIPTION --- */ -}}
+<title>{{ $title }}</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="CrnLrYm_vMIX2iYF9P-pUM09zow-cDlAp5Gq01FN7i8" />
-<meta property="og:title" content="{{ if .IsHome }}
-        {{- printf "%s | %s" site.Title .Title -}}
-    {{ else if eq .Params.layout "page" }}
-        {{- printf "%s | %ss | %s" .Title (.Type | title) site.Title -}}
-    {{ else }}
-        {{- printf "%s | %s" .Title site.Title -}}
-    {{ end }}">
+<meta property="og:title" content="{{ $title }}">
 <meta property="og:site_name" content="L U T N I Ț A">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://images2.imgbox.com/2e/f2/CDx8ZuF3_o.png">
-<meta name="description" content="LUTNIȚA Gallery | Home">
+<meta name="description" content="{{ $desc }}">
 <link rel="image_src" href="https://images2.imgbox.com/2e/f2/CDx8ZuF3_o.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
