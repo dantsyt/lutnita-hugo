@@ -13,11 +13,13 @@
 {{- if .Params.description }}
     {{- $desc = .Params.description -}}
 {{- else if eq .Title "Exhibitions" }}
-    {{- $dates := slice -}}
+    {{- $entries := slice -}}
     {{- range .Pages }}
-        {{- $dates = $dates | append .Params.data.date -}}
+        {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" .Params.data.artistname) }}
+        {{- $entry := printf "%s, %s" $artistNames .Params.data.date -}}
+        {{- $entries = $entries | append $entry -}}
     {{- end }}
-    {{- $desc = printf "Exhibitions · %s" (delimit $dates " · ") -}}
+    {{- $desc = printf "Exhibitions · %s" (delimit $entries " · ") -}}
 {{- else if eq .Title "Artists" }}
     {{- $names := slice -}}
     {{- range .Pages }}
