@@ -1,0 +1,16 @@
+{{- define "main" }}
+    <section id="text_section" class="text_section">
+        <h2 id="title" class="title"></h2>
+    </section>
+    <section class="right_space"></section>
+    <script>
+        const path = window.location.pathname
+        let msg = "404"
+        if (path.startsWith("/artists/")) {
+          msg = "404 artists, not one found..."
+        } else if (path.startsWith("/exhibitions/")) {
+          msg = "404 exhibitions, not one found..."
+        }
+        document.getElementById("title").textContent = msg
+      </script>
+{{ end }}
