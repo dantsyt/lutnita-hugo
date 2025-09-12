@@ -1,27 +1,31 @@
+{{- $baseUrl := .Site.BaseURL | safeHTML }}
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "{{ .Site.Title }}",
-      "url": "{{ .Site.BaseURL | safeHTML }}"
-    }
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "{{ $baseUrl }}#website",
+            "url": "{{ $baseUrl }}",
+            "name": "{{ .Site.Title }}"
+        },
+        {
+            "@type": "ArtGallery",
+            "@id": "{{ $baseUrl }}#organization",
+            "url": "{{ $baseUrl }}",
+            "name": "{{ .Site.Title }}",
+            "logo": "{{ .Site.Params.assetUrl | safeHTML }}/img/lutnita_logo_transparent_black.png",
+            "email": "galeria@lutnita.md",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Chișinău",
+                "addressCountry": "Republic of Moldova"
+            },
+            "sameAs": [
+                "https://www.instagram.com/galerialutnita/",
+                "https://www.facebook.com/p/Lutni%C8%9Ba-100082917473765/"
+            ]
+        }
+    ]
+}
 </script>
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ArtGallery",
-      "name": "{{ .Site.Title }}",
-      "url": "{{ .Site.BaseURL | safeHTML }}",
-      "logo": "{{ .Site.Params.assetUrl | safeHTML }}/img/lutnita_logo_transparent_black.png",
-      "email": "galeria@lutnita.md",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Chișinău",
-        "addressCountry": "Republic of Moldova"
-      },
-      "sameAs": [
-        "https://www.instagram.com/galerialutnita/",
-        "https://www.facebook.com/p/Lutni%C8%9Ba-100082917473765/"
-      ]
-    }
-</script>    
