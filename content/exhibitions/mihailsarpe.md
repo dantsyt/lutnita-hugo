@@ -15,7 +15,7 @@ params:
     exhibname: mihailsarpe
     artistname:
       - firstname: Mihail
-        lastname: Sarpe
+        lastname: Șarpe
     namepath: 
       - sarpe.svg
     date: '23 Feb 2024 — 12 Apr 2024'
