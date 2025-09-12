@@ -24,7 +24,7 @@
         {{- end }}
     </section>
     <section class="image_container"><img class="center_image_exhib"
-            src="{{ $assetUrl }}/img/exhibitions/{{ range first 1 .Pages }}{{ .Params.data.exhibname }}{{ end }}.webp" alt="center_image">
+            src="{{ $assetUrl }}/img/exhibitions/{{ range first 1 .Pages }}{{ .Params.data.exhibname }}{{ end }}.webp" alt="center_image" onclick="location.assign('/exhibitions/{{ range first 1 .Pages }}{{ .Params.data.exhibname }}{{ end }}')">
     </section>
     <section class="right_space"></section>
 {{ end }}
