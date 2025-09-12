@@ -6,5 +6,4 @@ export function sendLog(message) {
         },
         body: JSON.stringify({ message })
     }).catch(error => console.error('Error logging message:', error)) */
-    console.log(message)
 }

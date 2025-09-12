@@ -8,6 +8,3 @@ command = "chmod a+x build.sh && ./build.sh"
 directory = "./public"
 html_handling = "force-trailing-slash"
 not_found_handling = "404-page"
-
-[observability.logs]
-enabled = true
