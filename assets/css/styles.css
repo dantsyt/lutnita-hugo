@@ -165,7 +165,7 @@ h4 {
     flex-direction: row-reverse;
 }
 
-.vols_wrapper {
+.vols_wrapper, .vol_wr_nohover {
     border: 1px solid #ffffff;
     border-left: none;
     border-right: none;

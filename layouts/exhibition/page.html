@@ -20,7 +20,15 @@
                 </div>
                 {{- end }}
             </div>
+            {{- if in (slice "pavelbrailav1" "pavelbrailav2") $exhibname }}
+            <div class="vol_wr_nohover">
+                <h3 class="vol">{{ $data.text }}</h3>
+                <h4 class="exhibition_date">{{ $data.date }}</h4>
+                <h3 class="loc">{{ $data.loc }}</h3>
+            </div>
+            {{- else }}
             <h4 class="exhibition_date">{{ $data.date }}</h4>
+            {{- end }}
             <h6 class="pdf_mob"><a href="/pdf/{{ $exhibname }}.pdf" target="_blank">info</a></h6>
             </div>
             <div class="img_counter">
