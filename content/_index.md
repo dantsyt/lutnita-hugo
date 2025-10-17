@@ -12,7 +12,7 @@ params:
     - menu_index.js
     - index_vols.js
   data:
-    - exhibname: 
+    - exhibname: pavelbrailav1
       artistname:
         - firstname: Pavel
           lastname: Brăila
