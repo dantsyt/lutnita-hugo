@@ -1,6 +1,6 @@
 #!/bin/bash
 
-grep -r "$1" assets/js/* \
+grep -r "$1" ./* \
 | awk -F: '{ print $1 }' \
 | while read -r file; do 
 echo "Filename: $file"
