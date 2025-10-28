@@ -1,5 +1,5 @@
 const title = document.getElementById('title')
-const assetUrl = "https://cdn.lutnita.dantsyt.cc"
+const assetUrl = "https://cdn.lutnita.md"
 
 getNews().then(() => {
     const names = document.querySelectorAll('.text_container')
