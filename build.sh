@@ -39,18 +39,18 @@ main() {
   export PATH="${HOME}/.local/hugo:${PATH}"
 
   # Install Node.js
-  echo "Installing Node.js ${NODE_VERSION}..."
-  curl -sLJO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz"
-  tar -C "${HOME}/.local" -xf "node-v${NODE_VERSION}-linux-x64.tar.xz"
-  rm "node-v${NODE_VERSION}-linux-x64.tar.xz"
-  export PATH="${HOME}/.local/node-v${NODE_VERSION}-linux-x64/bin:${PATH}"
+  #echo "Installing Node.js ${NODE_VERSION}..."
+  #curl -sLJO "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz"
+  #tar -C "${HOME}/.local" -xf "node-v${NODE_VERSION}-linux-x64.tar.xz"
+  #rm "node-v${NODE_VERSION}-linux-x64.tar.xz"
+  #export PATH="${HOME}/.local/node-v${NODE_VERSION}-linux-x64/bin:${PATH}"
 
   # Verify installations
   echo "Verifying installations..."
   echo Dart Sass: "$(sass --version)"
   echo Go: "$(go version)"
   echo Hugo: "$(hugo version)"
-  echo Node.js: "$(node --version)"
+  #echo Node.js: "$(node --version)"
 
   # Configure Git
   echo "Configuring Git..."
