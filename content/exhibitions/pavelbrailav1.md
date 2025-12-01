@@ -1,6 +1,6 @@
 ---
 date: '2025-10-17T21:04:12+03:00'
-title: 'Pavel Brăila Vol. 1'
+title: 'Pavel Brăila Vol. I'
 type: exhibition
 layout: page
 params:

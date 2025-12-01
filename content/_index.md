@@ -22,7 +22,7 @@ params:
       date: '26 Sep 2025 — 16 Nov 2025'
       loc: Chișinău
       image: pavelbrailav1.webp
-    - exhibname: 
+    - exhibname: pavelbrailav2
       artistname:
         - firstname: Pavel
           lastname: Brăila
