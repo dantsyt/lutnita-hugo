@@ -440,10 +440,11 @@
     }
 
     #bug {
-    position: absolute;
-    bottom: 30vh;
-    right: 23vw;
-}
+        height: 3cm;
+        position: absolute;
+        bottom: 30vh;
+        right: 23vw;
+    }
 }
 
 /* Min-width: 320px (smaller phone viewpoints)
