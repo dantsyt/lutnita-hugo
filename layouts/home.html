@@ -21,13 +21,13 @@
       <h4 class="exhibition_date">{{ .date }}</h4>
       </div>
       <div class="image_container_mob_index">
-        <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ .image }}" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ .exhibname }}')">
+        <img id="bug" class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/bug.webp" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ .exhibname }}')">
       </div>
     </div>
     {{- end }}
   </section>
-  <section class="image_container"><img class="center_image_index"
-        src="{{ $assetUrl }}/img/exhibitions/{{ $first.image }}" alt="{{ $artistNames }}"
+  <section class="image_container"><img id="bug" class="center_image_index"
+        src="{{ $assetUrl }}/img/exhibitions/bug.webp" alt="{{ $artistNames }}"
         onclick="location.assign('/exhibitions/{{ $first.exhibname }}')">
   </section>
   <section class="right_space"></section>

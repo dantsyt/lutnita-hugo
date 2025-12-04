@@ -603,3 +603,10 @@ video {
 .dark_mode h6 {
     cursor: url('cursors/cursor_white.svg'), default !important;
 }
+
+#bug {
+    height: 2.5cm;
+    position: absolute;
+    bottom: 13vh;
+    right: 23vw;
+}
