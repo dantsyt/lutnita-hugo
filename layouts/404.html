@@ -11,6 +11,8 @@
         } else if (path.startsWith("/exhibitions/")) {
           msg = "404 exhibitions, not one found..."
         }
-        document.getElementById("title").textContent = msg
+        document.querySelector("#title").textContent = msg
+        document.querySelector("html").className="full_height"
+        document.querySelector("body").className="full_body"
       </script>
 {{ end }}
