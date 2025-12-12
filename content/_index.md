@@ -3,7 +3,7 @@ date: '2025-12-04T18:34:20+03:00'
 title: Home
 description: 'Upcoming exhibition: Ana Avram, 12 Dec 2025 — 15 Feb 2026, Chișinău'
 params:
-  subtitle: Upcoming
+  subtitle: Current
   class:
     html: full_height
     body: full_body
