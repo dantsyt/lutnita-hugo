@@ -1,26 +1,22 @@
 {{ define "main" }}
     {{- $assetUrl := .Site.Params.assetUrl }}
     {{- $data := .Params.data }}
-    {{- $exhibname := $data.exhibname }}
+    {{- $exhibName := $data.exhibname }}
     {{- $captionsArr := $data.captions }}
     {{- $countTotal := $data.images }}
-    {{- $imgDir := printf "%s/img/exhibitions/%s" $assetUrl $exhibname }}
-    {{- $imgDirMob := printf "%s/img/exhibitions/%s/mob" $assetUrl $exhibname }}
-    {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
+    {{- $imgDir := printf "%s/img/exhibitions/%s" $assetUrl $exhibName }}
+    {{- $imgDirMob := printf "%s/img/exhibitions/%s/mob" $assetUrl $exhibName }}
+    {{- $artistFullNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
     <section id="text_section" class="text_section">
         <h2 id="title" class="title title_menu">&#9776;</h2>
-        <div id="{{ $exhibname }}" class="text_container_nohover">
+        <div id="{{ $exhibName }}" class="text_container_nohover">
             <div class="names_wrapper">
                 {{- $name := $data.namepath }}
                 {{- $first := index $name 0 }}
                 {{- $toShow := cond (eq $first "vbmmrdngmr.svg") (after 1 $name) $name }}
-                {{- range $toShow }}
-                <div class="names_container">
-                    <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
-                </div>
-                {{- end }}
+                {{- partial "spec/artistonexhib.html" (dict "exhibName" $exhibName "assetUrl" $assetUrl "toShow" $toShow)}}
             </div>
-            {{- if in (slice "pavelbrailav1" "pavelbrailav2") $exhibname }}
+            {{- if in (slice "pavelbrailav1" "pavelbrailav2") $exhibName }}
             <div class="vol_wr_nohover">
                 <h3 class="vol">{{ $data.text }}</h3>
                 <h4 class="exhibition_date">{{ $data.date }}</h4>
@@ -29,19 +25,19 @@
             {{- else }}
             <h4 class="exhibition_date">{{ $data.date }}</h4>
             {{- end }}
-            <h6 class="pdf_mob"><a href="/pdf/{{ $exhibname }}.pdf" target="_blank">info</a></h6>
+            <h6 class="pdf_mob"><a href="/pdf/{{ $exhibName }}.pdf" target="_blank">info</a></h6>
             </div>
             <div class="img_counter">
             <p id="counter_text" class="counters">Exhibition views</p>
             <p class="counters"><span id="counter_num"> 1</span>/<span id="counter_total">{{ $countTotal }}</span></p>
             </div>
-            <h6 class="pdf"><a href="/pdf/{{ $exhibname }}.pdf" target="_blank">info</a></h6>
+            <h6 class="pdf"><a href="/pdf/{{ $exhibName }}.pdf" target="_blank">info</a></h6>
     </section>
     <section class="image_container one_exhib">
         <div id="space_image" class="space_image"></div>
-            <img id="main_image" class="center_image_exhib center_image_one_exhib inverted" src="{{ $imgDir }}/1.webp" alt="{{ $artistNames }}">
+            <img id="main_image" class="center_image_exhib center_image_one_exhib inverted" src="{{ $imgDir }}/1.webp" alt="{{ $artistFullNames }}">
         <div class="image_container_mob_one">
-            <img class="center_image_mob mob_one_exhib inverted" src="{{ $imgDirMob }}/1_450px.webp" alt="{{ $artistNames }}">
+            <img class="center_image_mob mob_one_exhib inverted" src="{{ $imgDirMob }}/1_450px.webp" alt="{{ $artistFullNames }}">
         </div>
         <p id="captions_desk" class="captions">{{ range first 1 $captionsArr }}{{ . }}{{ end }}</p>
     </section>
