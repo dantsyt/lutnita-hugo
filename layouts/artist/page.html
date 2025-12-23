@@ -16,7 +16,7 @@
             <h6 class="pdf_mob"><a href="/pdf/bio/{{ $fullname }}.pdf" target="_blank">bio</a></h6>
         </div>
         {{- range where site.RegularPages "Section" "exhibitions" }}
-            {{- partial "spec/exhibartist.html" (dict "artistname" $fullname "exhibdata" .Params.data "id" "exhib_link_mob" "class" "exhib_link exhib_link_mob") }}
+            {{- partial "spec/exhibonartist.html" (dict "artistname" $fullname "exhibdata" .Params.data "id" "exhib_link_mob" "class" "exhib_link exhib_link_mob") }}
         {{- end }}
         <div class="img_counter">
             <p id="counter_text" class="counters">Works</p>
@@ -24,7 +24,7 @@
         </div>
         <h6 class="pdf"><a href="/pdf/bio/{{ $fullname }}.pdf" target="_blank">bio</a></h6>
         {{- range where site.RegularPages "Section" "exhibitions" }}
-            {{- partial "spec/exhibartist.html" (dict "artistname" $fullname "exhibdata" .Params.data "id" "exhib_link" "class" "exhib_link") }}
+            {{- partial "spec/exhibonartist.html" (dict "artistname" $fullname "exhibdata" .Params.data "id" "exhib_link" "class" "exhib_link") }}
         {{- end }}
     </section>
     <section class="image_container one_exhib">
