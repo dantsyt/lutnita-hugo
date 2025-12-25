@@ -10,7 +10,7 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: cepleanugorduz
     artistname:
@@ -18,20 +18,16 @@ params:
         lastname: Cepleanu
       - firstname: Vasile
         lastname: Gorduz
-    namepath: 
-      - dianacepleanu2.svg
-      - vasilegorduz2.svg
+    namepath:
+      - svg: dianacepleanu2.svg
+        page: dianacepleanu
+      - svg: vasilegorduz2.svg
     date: '11 Oct 2024 — 1 Dec 2024'
     images: 27
     captions:
       - |
         Exhibition view
-      - |
-        Diana Cepleanu
-        Self-Portrait Made of Soil
-        oil and soil on canvas, 2015
-        40 x 30 cm 
-        Frame: 42 x 32 x 3.1 cm
+      - "Diana Cepleanu\nSelf-Portrait Made of Soil\noil and soil on canvas, 2015\n40 x 30 cm \nFrame: 42 x 32 x 3.1 cm\n"
       - |
         Exhibition view
       - |
@@ -112,10 +108,7 @@ params:
         54.5 x 41 cm
       - |
         Exhibition view
-      - |
-        Diana Cepleanu
-        Self-Portrait 
-        various techniques and dimensions, 2015
+      - "Diana Cepleanu\nSelf-Portrait \nvarious techniques and dimensions, 2015\n"
       - |
         Exhibition view
       - |

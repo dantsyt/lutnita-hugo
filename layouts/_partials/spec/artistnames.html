@@ -1,7 +1,7 @@
 {{- $temp := slice }}
 {{- $artistNameSource := index . "artistNameSource" }}
 {{- range $artistNameSource }}
-  {{- $temp = $temp | append (printf "%s %s" (.firstname) (.lastname)) }}
+  {{- $temp = $temp | append (printf "%s %s" .firstname .lastname) }}
 {{- end }}
 {{- $artistNames := delimit $temp ", " }}
 {{- return $artistNames }}

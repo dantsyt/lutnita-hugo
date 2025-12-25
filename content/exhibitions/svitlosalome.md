@@ -10,7 +10,7 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: svitlosalome
     artistname:
@@ -18,9 +18,10 @@ params:
         lastname: Svitlo
       - firstname: Salt
         lastname: Salome
-    namepath: 
-      - maxsvitlo_oneline.svg
-      - saltsalome_oneline.svg
+    namepath:
+      - svg: maxsvitlo_oneline.svg
+      - svg: saltsalome_oneline.svg
+        page: saltsalome
     date: '12 Jul 2024 — 1 Sep 2024'
     images: 18
     captions:

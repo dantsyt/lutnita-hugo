@@ -10,7 +10,7 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: dclsmbvr
     artistname:
@@ -21,12 +21,13 @@ params:
       - firstname: Mihai
         lastname: Brunea
       - firstname: Valentina
-        lastname: Rusu Ciobanu         
-    namepath: 
-      - cepleanu.svg
-      - sainciuc.svg
-      - brunea.svg
-      - rusuciobanu.svg
+        lastname: Rusu Ciobanu
+    namepath:
+      - svg: cepleanu.svg
+        page: dianacepleanu
+      - svg: sainciuc.svg
+      - svg: brunea.svg
+      - svg: rusuciobanu.svg
     date: '09 Jun 2023 — 06 Aug 2023'
     images: 22
     captions:

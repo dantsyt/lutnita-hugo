@@ -16,8 +16,9 @@ params:
     artistname:
       - firstname: Anna
         lastname: Godzina
-    namepath: 
-      - annagodzina.svg
+    namepath:
+      - svg: annagodzina.svg
+        page: annagodzina
     date: '28 Mar 2025 — 27 Apr 2025'
     images: 7
     captions:
@@ -28,7 +29,7 @@ params:
         Talanca bells, engines, arduino, 2024
       - |
         Exhibition view
-      - | 
+      - |
         EARTHSCAPES/ 47°44′17.8326′′N, 28°26′59.3196′′E
         8mm film,3'16", 2024
       - |

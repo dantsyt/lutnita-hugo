@@ -10,14 +10,14 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: camiliafilipov
     artistname:
       - firstname: Camilia
         lastname: Filipov
-    namepath: 
-      - filipov.svg
+    namepath:
+      - svg: filipov.svg
     date: '28 Oct 2022 — 18 Jan 2023'
     images: 16
     captions:

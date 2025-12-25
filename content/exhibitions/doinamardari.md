@@ -10,14 +10,14 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: doinamardari
     artistname:
       - firstname: Doina
         lastname: Mardari
-    namepath: 
-      - doinamardari.svg
+    namepath:
+      - svg: doinamardari.svg
     date: '4 Oct 2024 — 4 Oct 2024'
     images: 2
     captions:

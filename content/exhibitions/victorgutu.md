@@ -10,14 +10,15 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: victorgutu
     artistname:
       - firstname: Victor
         lastname: Guțu
-    namepath: 
-      - victorgutu.svg
+    namepath:
+      - svg: victorgutu.svg
+        page: victorgutu
     date: '22 Dec 2023 — 11 Feb 2024'
     images: 12
     captions:

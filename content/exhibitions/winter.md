@@ -10,7 +10,7 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: winter
     artistname:
@@ -44,24 +44,27 @@ params:
         lastname: Fanfarov
       - firstname: Valentina
         lastname: Rusu Ciobanu
-    namepath: [
-    "alexbodea_wr.svg",
-    "serbansavu_wr.svg",
-    "markverlan_wr.svg",
-    "dmitrisibaev_wr.svg",
-    "sorincampan_wr.svg",
-    "mirceabut_wr.svg",
-    "victorgutu_wr.svg",
-    "empty_w.png",
-    "dianacepleanu_wr.svg",
-    "licasainciuc_wr.svg",
-    "victorciobanu_wr.svg",
-    "gheorgheilea_wr.svg",
-    "andreicampan_wr.svg",
-    "victoriasadovnic_wr.svg",
-    "dumitrufanfarov_wr.svg",
-    "valentinarusuciobanu_wr.svg"
-  ]
+    namepath:
+      - svg: alexbodea_wr.svg
+        page: alexbodea
+      - svg: serbansavu_wr.svg
+      - svg: markverlan_wr.svg
+        page: markverlan
+      - svg: dmitrisibaev_wr.svg
+      - svg: sorincampan_wr.svg
+      - svg: mirceabut_wr.svg
+      - svg: victorgutu_wr.svg
+        page: victorgutu
+      - svg: empty_w.png
+      - svg: dianacepleanu_wr.svg
+        page: dianacepleanu
+      - svg: licasainciuc_wr.svg
+      - svg: victorciobanu_wr.svg
+      - svg: gheorgheilea_wr.svg
+      - svg: andreicampan_wr.svg
+      - svg: victoriasadovnic_wr.svg
+      - svg: dumitrufanfarov_wr.svg
+      - svg: valentinarusuciobanu_wr.svg
     date: '13 Dec 2024 — 26 Jan 2025'
     images: 28
     captions:
@@ -131,11 +134,7 @@ params:
         Exhibition view
       - |
         Exhibition view
-      - |
-        Andrei Câmpan
-        Landscape 
-        acrylic on canvas, 2024
-        90.5 x 90 cm
+      - "Andrei Câmpan\nLandscape \nacrylic on canvas, 2024\n90.5 x 90 cm\n"
       - |
         Exhibition view
       - |
@@ -165,15 +164,6 @@ params:
         The Beginning of Winter
         oil on canvas, 31 december 1999
         60 X 51 cm
-      - |
-        Diana Cepleanu
-        Winter 
-        oil on canvas, 2003
-        52 x 42 cm
-      - |
-        Diana Cepleanu
-        Winter 
-        oil on canvas, 2003
-        52 x 42 cm"
-
+      - "Diana Cepleanu\nWinter \noil on canvas, 2003\n52 x 42 cm\n"
+      - "Diana Cepleanu\nWinter \noil on canvas, 2003\n52 x 42 cm\"\n"
 ---

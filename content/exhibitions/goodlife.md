@@ -10,7 +10,7 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: goodlife
     artistname:
@@ -34,16 +34,16 @@ params:
         lastname: Popa
       - firstname: Tatiana
         lastname: Fiodorova Lefter
-    namepath: 
-      - andreinacu.svg
-      - catherinemorland.svg
-      - ghenadiepopescu.svg
-      - irinaboteajondean.svg
-      - marinasulima.svg
-      - nikitakadan.svg
-      - pavelbraila.svg
-      - ralucapopa.svg
-      - tatianafiodorova.svg
+    namepath:
+      - svg: andreinacu.svg
+      - svg: catherinemorland.svg
+      - svg: ghenadiepopescu.svg
+      - svg: irinaboteajondean.svg
+      - svg: marinasulima.svg
+      - svg: nikitakadan.svg
+      - svg: pavelbraila.svg
+      - svg: ralucapopa.svg
+      - svg: tatianafiodorova.svg
     date: '14 Sep 2024 — 28 Sep 2024'
     images: 19
     captions:

@@ -10,14 +10,15 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: flaviucacoveanu
     artistname:
       - firstname: Flaviu
         lastname: Cacoveanu
-    namepath: 
-      - cacoveanu.svg
+    namepath:
+      - svg: cacoveanu.svg
+        page: flaviucacoveanu
     date: '18 Aug 2023 — 15 Oct 2023'
     images: 31
     captions:
@@ -60,7 +61,7 @@ params:
       - |
         Untitled (Plastic Bottles)
         wrappers from plastic bottles, 2023
-      - 
+      -
       - |
         Exhibition view
       - |

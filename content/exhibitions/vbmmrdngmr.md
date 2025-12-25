@@ -10,7 +10,7 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: vbmmrdngmr
     artistname:
@@ -32,18 +32,19 @@ params:
         lastname: Ghenie
       - firstname: Anca
         lastname: Munteanu Rîmnic
-    namepath: 
-      - vbmmrdngmr.svg
-      - dragneva.svg
-      - macari.svg
-      - nuur.svg
-      - ghenie.svg
-      - verlanoneline.svg
-      - empty.png
-      - braila.svg
-      - rata.svg
-      - mardari.svg
-      - munteanurimnic.svg
+    namepath:
+      - svg: vbmmrdngmr.svg
+      - svg: dragneva.svg
+      - svg: macari.svg
+      - svg: nuur.svg
+      - svg: ghenie.svg
+      - svg: verlanoneline.svg
+        page: markverlan
+      - svg: empty.png
+      - svg: braila.svg
+      - svg: rata.svg
+      - svg: mardari.svg
+      - svg: munteanurimnic.svg
     date: '03 Feb 2023 — 19 Mar 2023'
     images: 14
     captions:

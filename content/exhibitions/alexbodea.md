@@ -10,14 +10,15 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: alexbodea
     artistname:
       - firstname: Alex
         lastname: Bodea
-    namepath: 
-      - bodea.svg
+    namepath:
+      - svg: bodea.svg
+        page: alexbodea
     date: '19 Apr 2024 — 30 Jun 2024'
     images: 21
     captions:

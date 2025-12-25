@@ -10,14 +10,15 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: mihailsarpe
     artistname:
       - firstname: Mihail
         lastname: Șarpe
-    namepath: 
-      - sarpe.svg
+    namepath:
+      - svg: sarpe.svg
+        page: mihailsarpe
     date: '23 Feb 2024 — 12 Apr 2024'
     images: 24
     captions:

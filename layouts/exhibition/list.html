@@ -10,10 +10,10 @@
             <div class="names_wrapper">
                 {{- $name := $data.namepath }}
                 {{- $first := index $name 0 }}
-                {{- $toShow := cond (eq $first "vbmmrdngmr.svg") (slice $first) $name }}
+                {{- $toShow := cond (eq $first.svg "vbmmrdngmr.svg") (slice $first) $name }}
                 {{- range $toShow }}
                 <div class="names_container">
-                    <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
+                    <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ .svg }}">
                 </div>
                 {{- end }}
             </div>

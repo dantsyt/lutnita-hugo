@@ -10,14 +10,15 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: saltsalome
     artistname:
       - firstname: Salt
         lastname: Salome
-    namepath: 
-      - salome.svg
+    namepath:
+      - svg: salome.svg
+        page: saltsalome
     date: '27 Oct 2023 — 10 Dec 2023'
     images: 23
     captions:

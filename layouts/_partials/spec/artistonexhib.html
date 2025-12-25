@@ -1,16 +1,10 @@
-{{- $allArtists := slice }}
-{{- range where site.RegularPages "Section" "artists" }}
-  {{- $allArtists = $allArtists | append .Params.data.fullname }}
-{{- end }}
-
-{{- $exhibName := index . "exhibName" }}
 {{- $assetUrl := index . "assetUrl" }}
 {{- range .toShow }}
 <div class="names_container">
-  {{- if in $allArtists $exhibName }}
-    <a href="/artists/{{ $exhibName }}"><img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}"></a>
+  {{ if .page }}
+      <a href="/artists/{{ .page }}"><img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ .svg }}"></a>
   {{- else }}
-    <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
+    <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ .svg }}">
   {{- end }}
 </div>
 {{- end }}

@@ -10,20 +10,20 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: pavelbrailav2
     artistname:
       - firstname: Pavel
         lastname: Brăila
-    namepath: 
-      - pavelbrailavols.svg
+    namepath:
+      - svg: pavelbrailavols.svg
     text: Vol. II
     date: '11 Oct 2025 — 16 Nov 2025'
     loc: Ustia
     images: 20
     captions:
-      - 
+      -
       - |
         Exhibition view
       - |
@@ -76,5 +76,5 @@ params:
         Peace is When They are Shooting Somewhere Else
         acrylic on paper, bullet holes, 2024
         84 x 59.4 cm
-      - 
+      -
 ---

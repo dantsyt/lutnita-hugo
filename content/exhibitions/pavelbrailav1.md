@@ -10,14 +10,14 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: pavelbrailav1
     artistname:
       - firstname: Pavel
         lastname: Brăila
-    namepath: 
-      - pavelbrailavols.svg
+    namepath:
+      - svg: pavelbrailavols.svg
     text: Vol. I
     date: '26 Sep 2025 — 16 Nov 2025'
     loc: Chișinău

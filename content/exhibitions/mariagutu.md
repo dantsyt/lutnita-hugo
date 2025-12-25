@@ -10,14 +10,15 @@ params:
     main: full_main
   scripts:
     - oneExhib.js
-  isModule: true  
+  isModule: true
   data:
     exhibname: mariagutu
     artistname:
       - firstname: Maria
         lastname: Guțu
-    namepath: 
-      - mariagutu.svg
+    namepath:
+      - svg: mariagutu.svg
+        page: mariagutu
     date: '7 Feb 2025 — 16 Mar 2025'
     images: 31
     captions:
@@ -54,11 +55,7 @@ params:
         Văratic, 2020
         UltraChrome Pro inkjet print on Hahnemühle Photo Matt Fibre 200g
         43 x 28.2 cm
-      - |
-        Storks in Trees
-        Orhei-Bălți Road, 2019 
-        UltraChrome Pro inkjet print on Hahnemühle Photo Matt Fibre 200g
-        27 x 17.9 cm
+      - "Storks in Trees\nOrhei-Bălți Road, 2019 \nUltraChrome Pro inkjet print on Hahnemühle Photo Matt Fibre 200g\n27 x 17.9 cm\n"
       - |
         Exhibition view
       - |
