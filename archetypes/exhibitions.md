@@ -16,13 +16,14 @@ params:
     artistname:
       - firstname: 
         lastname: 
-    namepath: 
-      - .svg
+    namepath:
+      - svg: .svg
+        page: 
     date: 'start — end'
     images: 0
     captions:
       - |
-        "caption"
+        caption
       - |
-        "caption"
+        caption
 ---
