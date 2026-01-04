@@ -33,8 +33,9 @@
         {{- end }}
     </section>
     {{- $firstpage := index .Pages 0 }}
-    {{- $exhibname := $firstpage.Params.data.exhibname }}
-    {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $firstpage.Params.data.artistname) }}
+    {{- $data := $firstpage.Params.data }}
+    {{- $exhibname :=$data.exhibname }}
+    {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
     <section class="image_container"><img class="center_image_exhib"
             src="{{ $assetUrl }}/img/exhibitions/{{ $exhibname }}.webp" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $exhibname }}')">
     </section>

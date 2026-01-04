@@ -11,12 +11,12 @@ params:
   scripts:
     - menu_index.js
   data:
-    - exhibname: 
-      artistname:
-        - firstname: Ana
-          lastname: Avram
-      namepath: 
-        - anaavram.svg
-      date: '12 Dec 2025 — 15 Feb 2026'
-      image: blank.svg
+    exhibname: anaavram
+    artistname:
+      - firstname: Ana
+        lastname: Avram
+    namepath: 
+      - anaavram.svg
+    date: '12 Dec 2025 — 15 Feb 2026'
+    image: bug.webp
 ---

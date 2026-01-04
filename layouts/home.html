@@ -1,34 +1,31 @@
 {{- define "main" }}
   {{- $assetUrl := .Site.Params.assetUrl }}
   {{- $data := .Params.data }}
-  {{- $first := index $data 0 }}
-  {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $first.artistname) }}
+  {{- $image := $data.image }}
+  {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
   <section id="text_section" class="text_section">
     <h2 class="title">{{ .Params.subtitle }}</h2>
-    {{- range $i, $d := $data }}
-    <div class="text_container" onclick="location.assign('/exhibitions/{{ .exhibname }}')">
-      {{- if eq $i 0 }}
+    <div class="text_container" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
       <div class="names_wrapper">
-        {{- $name := .namepath }}
+        {{- $name := $data.namepath }}
         {{- range $name }}
         <div class="names_container">
           <img class="artist_name"
               src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
         </div>
-        {{- end }}
       </div>
       {{- end }}
-      <h4 class="exhibition_date">{{ .date }}</h4>
+      <h4 class="exhibition_date">{{ $data.date }}</h4>
       </div>
       <div class="image_container_mob_index">
-        <img id="bug" class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/bug.webp" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ .exhibname }}')">
+        <!-- REMOVE bug id after anaavram -->
+        <img id="bug" class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
       </div>
     </div>
-    {{- end }}
   </section>
   <section class="image_container"><img id="bug" class="center_image_index"
-        src="{{ $assetUrl }}/img/exhibitions/bug.webp" alt="{{ $artistNames }}"
-        onclick="location.assign('/exhibitions/{{ $first.exhibname }}')">
+        src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}"
+        onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
   </section>
   <section class="right_space"></section>
 {{ end -}}
