@@ -47,138 +47,155 @@ document.addEventListener("DOMContentLoaded", () => {
             )
         })
     } else {
-        const YEAR_RE = /\b(19|20)\d{2}$\b/;
-
-        const getYearFromEl = el => {
-            if (!el) return null;
-            const txt = el.textContent || '';
-            const m = txt.match(YEAR_RE);
-            return m ? m[0] : null;
-        };
-
-        const titleYearEl = document.createElement('span');
-        titleYearEl.classList.add('current_year')
-        document.querySelector('.exhib_title').appendChild(titleYearEl)
-
-        // find all exhibition date elements
-        const dateEls = Array.from(document.querySelectorAll('.exhibition_date'));
-
-        // Map element -> year
-        const elYears = dateEls.map(el => ({ el, year: getYearFromEl(el) })).filter(x => x.year);
-
-        // Utility to set the visible year (idempotent)
-        let current = null;
-        const setYear = y => {
-            if (y === current) return;
-            current = y;
-            titleYearEl.textContent = y || '';
-        };
-
-        // Special bottom-of-page behaviour: force year to "2022" (desktop parity)
+        const YEAR_RE = /\b(20)\d{2}$\b/;
         const BOTTOM_YEAR = '2022';
-        const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 1;
-        const checkBottomAndApply = () => {
-            if (isAtBottom()) {
-            setYear(BOTTOM_YEAR);
-            return true;
-            }
-            return false;
+        const TOP_THRESHOLD = 8;
+
+        const getYear = el => {
+            if (!el) return null;
+            const t = (el.textContent || '').trim();
+            const m = t.match(YEAR_RE);
+            return m ? m[0].trim() : null;
         };
 
-        // Top-of-page behaviour: force first exhibition's year when at very top
-        const TOP_THRESHOLD = 8; // px from top considered "at top"
-        const isAtTop = () => window.scrollY <= TOP_THRESHOLD;
-        const checkTopAndApply = () => {
-            if (isAtTop()) {
-                setYear(elYears[0].year);
-                return true;
-            }
-            return false;
+        const wait = f => {
+            let i = setInterval(() => {
+            const ds = [...document.querySelectorAll('.exhibition_date')];
+            const headerInner = document.querySelector('.exhib_title');
+            if (ds.length && headerInner) clearInterval(i), f(headerInner, ds);
+            }, 100);
         };
 
-        // INITIALIZATION: if page is at top, show the first exhibition's year,
-        // otherwise pick the element nearest the viewport center
-        if (isAtTop()) {
-            setYear(elYears[0].year);
-        } else {
-            // pick the element whose center is closest to viewport middle
-            const viewportMiddle = window.innerHeight * 0.5;
-            let best = elYears[0];
-            let bestDist = Infinity;
-            for (const ew of elYears) {
-            const r = ew.el.getBoundingClientRect();
-            const center = r.top + r.height / 2;
-            const dist = Math.abs(center - viewportMiddle);
-            if (dist < bestDist) { bestDist = dist; best = ew; }
-            }
-            setYear(best ? best.year : elYears[0].year);
-        }
+        wait((headerInner) => {
+            // inject trigger + picker if not present
+            let btn = headerInner.querySelector('.current_year');
+            let picker = document.getElementById('year-picker');
+            let list = document.getElementById('year-picker-list');
 
-        // If browser supports IntersectionObserver, use it (recommended)
-        if ('IntersectionObserver' in window) {
-            // We want to find the element that is near a checkpoint vertical position.
-            // Use rootMargin to bias the observable area toward a point ~40-60% of viewport height.
-            const rootMargin = `-40% 0px -60% 0px`; // element is "in view" when it crosses ~center area
-            const io = new IntersectionObserver((entries) => {
-                // bottom override has highest priority
-                if (checkBottomAndApply()) return;                
-                if (checkTopAndApply()) return;
-                
-                // Among intersecting entries pick the one with the largest intersectionRatio
-                const visible = entries.filter(e => e.isIntersecting);
-                if (visible.length === 0) return;
-
-                visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-                const topEntry = visible[0];
-                const y = getYearFromEl(topEntry.target) || null;
-                setYear(y);
-            }, { root: null, rootMargin, threshold: [0, 0.01, 0.25, 0.5, 0.75, 1] });
-
-            elYears.forEach(({ el }) => io.observe(el));
-
-            // Listen for scroll only to detect bottom-of-page/top-of-page (cheap)
-            window.addEventListener('scroll', () => {
-            if (checkBottomAndApply()) return;
-            checkTopAndApply();
-            }, { passive: true });
-
-            return;
-        }
-
-        // Fallback (no IO): throttled / requestAnimationFrame-based scroll handler
-        let ticking = false;
-        const onScroll = () => {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-            // priority checks
-            if (checkBottomAndApply()) {
-                ticking = false;
-                return;
-            }
-            if (checkTopAndApply()) {
-                ticking = false;
-                return;
+            if (!btn) {
+                btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'current_year';
+                btn.textContent = '';
+                headerInner.appendChild(btn);
             }
 
-            const checkpoint = window.innerHeight * 0.6;
-            for (const { el, year } of elYears) {
-                const r = el.getBoundingClientRect();
-                if (r.top <= checkpoint && r.bottom >= checkpoint) {
-                setYear(year);
-                ticking = false;
-                return;
+            if (!picker) {
+                picker = document.createElement('div');
+                picker.id = 'year-picker';
+                picker.className = 'year-picker';
+                list = document.createElement('ul');
+                list.id = 'year-picker-list';
+                list.className = 'year-picker-list';
+                picker.appendChild(list);
+                headerInner.appendChild(picker);
+            }
+
+            const dateEls = () => [...document.querySelectorAll('.exhibition_date')];
+            const collectYears = () => {
+                const ys = dateEls().map(getYear).filter(Boolean);
+                const set = [...new Set(ys)];
+                if (!set.includes(BOTTOM_YEAR)) set.push(BOTTOM_YEAR);
+                return set.sort((a,b)=>Number(b)-Number(a));
+            };
+
+            let cur = null;
+            const setTitle = y => { if (y===cur) return; cur=y; btn.textContent = y || ''; };
+
+            const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 1;
+            const isAtTop = () => window.scrollY <= TOP_THRESHOLD;
+
+            // init
+            const init = () => {
+                const els = dateEls();
+                if (!els.length) return;
+                if (isAtTop()) return setTitle(getYear(els[0]));
+                const mid = window.innerHeight * .5;
+                let best=els[0],bd=Infinity;
+                for(const e of els){const r=e.getBoundingClientRect();const c=r.top+r.height/2;const d=Math.abs(c-mid);if(d<bd){bd=d;best=e}}
+                setTitle(getYear(best));
+            };
+            init();
+
+            const openPicker = () => {
+                list.innerHTML = '';
+                collectYears().forEach(y=>{
+                    const li = document.createElement('li');
+                    const b = document.createElement('button');
+                    b.type = 'button'; b.textContent = y; b.dataset.year = y;
+                    if (y===cur) b.className = 'active';
+                    b.onclick = e => { e.stopPropagation(); picker.classList.remove('open'); document.removeEventListener('click', outside); scrollToYear(y); };
+                    li.appendChild(b);
+                    list.appendChild(li);
+                });
+                picker.classList.add('open');
+                document.addEventListener('click', outside);
+            };
+            const closePicker = () => { picker.classList.remove('open'); document.removeEventListener('click', outside); };
+            const outside = e => { if (!picker.contains(e.target) && e.target !== btn) closePicker(); };
+
+            btn.onclick = e => { e.stopPropagation(); picker.classList.contains('open') ? closePicker() : openPicker(); };
+
+            const scrollToYear = year => {
+                const els = dateEls();
+                const target = els.find(el => getYear(el) === year);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (year === BOTTOM_YEAR) {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                 }
+                setTitle(year);
+            };
+
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver(entries => {
+                    if (isAtBottom()) { setTitle(BOTTOM_YEAR); return; }
+                    if (isAtTop()) { const e=dateEls()[0]; if (e) { setTitle(getYear(e)); return; } }
+                    const vis = entries.filter(e=>e.isIntersecting);
+                    if (!vis.length) return;
+                    vis.sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+                    setTitle(getYear(vis[0].target));
+                }, { root:null, rootMargin:'-40% 0px -60% 0px', threshold:[0,0.01,0.25,0.5,0.75,1] });
+                const observe = () => { io.disconnect(); dateEls().forEach(d=>io.observe(d)); };
+                observe();
+                window.addEventListener('scroll', () => {
+                    if (isAtBottom()) setTitle(BOTTOM_YEAR); 
+                    else if (isAtTop()) {
+                        const e=dateEls()[0]; 
+                        if (e) setTitle(getYear(e)); 
+                    } 
+                }, { passive:true });
+            } else {
+                let t=false;
+                const onScroll = () => {
+                    if (t) return; t=true;
+                    requestAnimationFrame(()=>{
+                        if (isAtBottom()){ setTitle(BOTTOM_YEAR); t=false; return; }
+                        if (isAtTop()){ 
+                            const e=dateEls()[0]; 
+                            if (e){ 
+                                setTitle(getYear(e)); 
+                                t=false; 
+                                return; 
+                            } 
+                        }
+                        const cp = window.innerHeight * .6;
+                        for(const el of dateEls()){
+                            const r=el.getBoundingClientRect(); 
+                            if(r.top<=cp && r.bottom>=cp){ 
+                                setTitle(getYear(el)); 
+                                t=false; 
+                                return; 
+                            }
+                        }
+                        const es = dateEls(); 
+                        if (es.length) setTitle(getYear(es[es.length-1]));
+                        t=false;
+                    });
+                };
+                window.addEventListener('scroll', onScroll, { passive:true });
+                onScroll();
             }
-
-            // If nothing matched, fallback to the last element's year
-            setYear(elYears[elYears.length - 1].year);
-            ticking = false;
-            });
-        };
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        // also run once to ensure state is correct after load
-        onScroll();
+        });
     }
 })

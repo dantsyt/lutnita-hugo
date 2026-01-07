@@ -472,6 +472,45 @@
         bottom: 30vh;
         right: 23vw;
     }
+
+    .year-picker {
+        position:absolute;
+        right:4vw;
+        top:4vh;
+        z-index:1600;
+        max-width:90vw;
+        background:#fff;
+        display:none
+    }
+    
+    .year-picker.open {
+        display:block
+    }
+    
+    .year-picker-list {
+        list-style:none;
+        margin:0;
+        padding:6px;
+        max-height:55vh;
+        overflow-y:auto
+    }
+
+    .year-picker-list button {
+        width:100%;
+        text-align:left;
+        padding:8px 10px;
+        background:transparent;
+        border:0;
+        border-radius:6px;
+    }
+    .year-picker-list button.active {
+        background:rgba(0,0,0,.06);
+        font-weight:700
+    }
+
+    .exhibition_date {
+        scroll-margin-top: 21vh;
+    }
 }
 
 /* Min-width: 320px (smaller phone viewpoints)
