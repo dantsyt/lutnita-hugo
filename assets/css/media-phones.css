@@ -52,10 +52,23 @@
     }
 
     .exhib_title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         position: sticky;
         top: 4vh;
         z-index: 999;
         background-color: white;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    .current_year {
+        display: flex;
+        color: #bdbdbd;
+        font-weight: 600;
+        line-height: unset;
+        padding-bottom: 2em;
+        margin-inline-end: 8vw;
     }
 
     h4:first-of-type {
