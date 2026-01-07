@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const BOTTOM_YEAR = '2022';
         const TOP_THRESHOLD = 8;
         const PROGRAMMATIC_BLOCK_MS = 1400;
-        const VISUAL_OFFSET_RATIO = 0.27;
+        const VISUAL_OFFSET_RATIO = 0.28;
 
         const getYear = el => {
             if (!el) return null;
