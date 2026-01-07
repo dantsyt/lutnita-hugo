@@ -26,6 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
             let cur, highlight = y => yearElements.forEach(p => p.classList.toggle('hovered', p.textContent === y))
             document.addEventListener("scroll", () => {
                 if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 1) return cur !== "2022" && (highlight("2022"), cur = "2022")
+                const TOP_THRESHOLD = 8
+                if (window.scrollY <= TOP_THRESHOLD) {
+                    const topYear = getYear(exhibitions[0])
+                    return cur !== topYear && (highlight(topYear), cur = topYear)
+                }
                 const t = window.innerHeight * 0.6
                 for (const el of exhibitions) {
                     const r = el.getBoundingClientRect(), y = getYear(el)
