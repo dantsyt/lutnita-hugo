@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let cur = null;
             const setTitle = y => { if (y===cur) return; cur=y; btn.textContent = y || ''; };
 
-            const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 1;
+            const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 250;
             const isAtTop = () => window.scrollY <= TOP_THRESHOLD;
 
             // init
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } else if (year === BOTTOM_YEAR) {
-                    window.scrollTo({ top: document.body.scrollHeight-20, behavior: 'smooth' });
+                    window.scrollTo({ top: document.body.scrollHeight-750, behavior: 'smooth' });
                 }
                 setTitle(year);
             };
