@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const YEAR_RE = /\b(20)\d{2}$\b/;
         const BOTTOM_YEAR = '2022';
         const TOP_THRESHOLD = 8;
+        const PROGRAMMATIC_BLOCK_MS = 700;
 
         const getYear = el => {
             if (!el) return null;
@@ -100,6 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             let cur = null;
+            let programmaticTarget = null;
+            let programmaticTimer = null;
             const setTitle = y => { if (y===cur) return; cur=y; btn.textContent = y || ''; };
 
             const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 250;
@@ -112,10 +115,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (isAtTop()) return setTitle(getYear(els[0]));
                 const mid = window.innerHeight * .5;
                 let best=els[0],bd=Infinity;
-                for(const e of els){const r=e.getBoundingClientRect();const c=r.top+r.height/2;const d=Math.abs(c-mid);if(d<bd){bd=d;best=e}}
+                for (const e of els) {
+                    const r=e.getBoundingClientRect();
+                    const c=r.top+r.height/2;
+                    const d=Math.abs(c-mid);
+                    if (d<bd) { bd=d; best=e }
+                }
                 setTitle(getYear(best));
             };
             init();
+
+            const scrollToYear = year => {
+                const els = dateEls();
+                const target = els.find(el => getYear(el) === year);
+
+                programmaticTarget = year;
+                clearTimeout(programmaticTimer);
+                programmaticTimer = setTimeout(() => { programmaticTarget = null; }, PROGRAMMATIC_BLOCK_MS);
+                
+                setTitle(year);
+
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (year === BOTTOM_YEAR) {
+                    window.scrollTo({ top: document.body.scrollHeight-770, behavior: 'smooth' });
+                }
+            };
 
             const openPicker = () => {
                 list.innerHTML = '';
@@ -136,66 +161,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
             btn.onclick = e => { e.stopPropagation(); picker.classList.contains('open') ? closePicker() : openPicker(); };
 
-            const scrollToYear = year => {
-                const els = dateEls();
-                const target = els.find(el => getYear(el) === year);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else if (year === BOTTOM_YEAR) {
-                    window.scrollTo({ top: document.body.scrollHeight-770, behavior: 'smooth' });
-                }
-                setTitle(year);
-            };
-
             if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver(entries => {
-                    if (isAtBottom()) { setTitle(BOTTOM_YEAR); return; }
-                    if (isAtTop()) { const e=dateEls()[0]; if (e) { setTitle(getYear(e)); return; } }
-                    const vis = entries.filter(e=>e.isIntersecting);
+                const ioCallback = entries => {
+                    if (isAtBottom()) { setTitle(BOTTOM_YEAR); programmaticTarget = null; return; }
+                    if (isAtTop()) { const e = dateEls()[0]; if (e) { setTitle(getYear(e)); programmaticTarget = null; return; } }
+
+                    if (programmaticTarget) {
+                        const intendedEntry = entries.find(en => getYear(en.target) === programmaticTarget && en.isIntersecting);
+                        if (intendedEntry) {
+                            setTitle(programmaticTarget);
+                            clearTimeout(programmaticTimer);
+                            programmaticTarget = null;
+                        }
+                        return;
+                    }
+
+                    const vis = entries.filter(e => e.isIntersecting);
                     if (!vis.length) return;
-                    vis.sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+                    vis.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
                     setTitle(getYear(vis[0].target));
-                }, { root:null, rootMargin:'-40% 0px -60% 0px', threshold:[0,0.01,0.25,0.5,0.75,1] });
-                const observe = () => { io.disconnect(); dateEls().forEach(d=>io.observe(d)); };
+                };
+
+                const io = new IntersectionObserver(ioCallback, { root: null, rootMargin: '-40% 0px -60% 0px', threshold: [0, 0.01, 0.25, 0.5, 0.75, 1] });
+                const observe = () => { io.disconnect(); dateEls().forEach(d => io.observe(d)); };
                 observe();
+
                 window.addEventListener('scroll', () => {
-                    if (isAtBottom()) setTitle(BOTTOM_YEAR); 
-                    else if (isAtTop()) {
-                        const e=dateEls()[0]; 
-                        if (e) setTitle(getYear(e)); 
-                    } 
-                }, { passive:true });
+                    if (isAtBottom()) { setTitle(BOTTOM_YEAR); programmaticTarget = null; return; }
+                    if (isAtTop()) { const e = dateEls()[0]; if (e) { setTitle(getYear(e)); programmaticTarget = null; return; } }
+                }, { passive: true });
             } else {
-                let t=false;
+                let ticking = false;
                 const onScroll = () => {
-                    if (t) return; t=true;
-                    requestAnimationFrame(()=>{
-                        if (isAtBottom()){ setTitle(BOTTOM_YEAR); t=false; return; }
-                        if (isAtTop()){ 
-                            const e=dateEls()[0]; 
-                            if (e){ 
-                                setTitle(getYear(e)); 
-                                t=false; 
-                                return; 
-                            } 
-                        }
+                    if (ticking) return;
+                    ticking = true;
+                    requestAnimationFrame(() => {
+                        if (isAtBottom()) { setTitle(BOTTOM_YEAR); programmaticTarget = null; ticking = false; return; }
+                        if (isAtTop()) { const e = dateEls()[0]; if (e) { setTitle(getYear(e)); programmaticTarget = null; ticking = false; return; } }
+                        if (programmaticTarget) { ticking = false; return; }
+
                         const cp = window.innerHeight * .6;
-                        for(const el of dateEls()){
-                            const r=el.getBoundingClientRect(); 
-                            if(r.top<=cp && r.bottom>=cp){ 
-                                setTitle(getYear(el)); 
-                                t=false; 
-                                return; 
-                            }
+                        for (const el of dateEls()) {
+                            const r = el.getBoundingClientRect();
+                            if (r.top <= cp && r.bottom >= cp) { setTitle(getYear(el)); ticking = false; return; }
                         }
-                        const es = dateEls(); 
-                        if (es.length) setTitle(getYear(es[es.length-1]));
-                        t=false;
+                        const es = dateEls();
+                        if (es.length) setTitle(getYear(es[es.length - 1]));
+                        ticking = false;
                     });
                 };
-                window.addEventListener('scroll', onScroll, { passive:true });
+                window.addEventListener('scroll', onScroll, { passive: true });
                 onScroll();
             }
+
+            window.addEventListener('resize', () => { if (picker.classList.contains('open')) closePicker(); });
         });
     }
 })
