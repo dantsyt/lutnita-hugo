@@ -50,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const YEAR_RE = /\b(20)\d{2}$\b/;
         const BOTTOM_YEAR = '2022';
         const TOP_THRESHOLD = 8;
-        const PROGRAMMATIC_BLOCK_MS = 700;
+        const PROGRAMMATIC_BLOCK_MS = 1400;
+        const VISUAL_OFFSET_RATIO = 0.25;
 
         const getYear = el => {
             if (!el) return null;
@@ -68,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         wait((headerInner) => {
-            // inject trigger + picker if not present
             let btn = headerInner.querySelector('.current_year');
             let picker = document.getElementById('year-picker');
             let list = document.getElementById('year-picker-list');
@@ -105,15 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
             let programmaticTimer = null;
             const setTitle = y => { if (y===cur) return; cur=y; btn.textContent = y || ''; };
 
-            const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 250;
+            const isAtBottom = () => window.innerHeight + window.scrollY >= document.body.scrollHeight - 1;
             const isAtTop = () => window.scrollY <= TOP_THRESHOLD;
 
-            // init
             const init = () => {
                 const els = dateEls();
                 if (!els.length) return;
                 if (isAtTop()) return setTitle(getYear(els[0]));
-                const mid = window.innerHeight * .5;
+                const mid = window.innerHeight * 0.5;
                 let best=els[0],bd=Infinity;
                 for (const e of els) {
                     const r=e.getBoundingClientRect();
@@ -126,8 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
             init();
 
             const scrollToYear = year => {
-                const els = dateEls();
-                const target = els.find(el => getYear(el) === year);
+                const els = dateEls();                
+                const lastEl = els[els.length - 1];
+                const target = els.find(el => getYear(el) === year) || lastEl;
+                const VISUAL_OFFSET = Math.round(window.innerHeight * VISUAL_OFFSET_RATIO);
 
                 programmaticTarget = year;
                 clearTimeout(programmaticTimer);
@@ -135,11 +136,37 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 setTitle(year);
 
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else if (year === BOTTOM_YEAR) {
-                    window.scrollTo({ top: document.body.scrollHeight-770, behavior: 'smooth' });
+                if (!target) {
+                    const maxTop = Math.max(0, document.body.scrollHeight - window.innerHeight - 1);
+                    window.scrollTo({ top: maxTop, behavior: 'smooth' });
+                    return;
                 }
+
+                const rect = target.getBoundingClientRect();
+                const desiredTop = Math.round(window.scrollY + rect.top - VISUAL_OFFSET);
+
+                const maxTop = Math.max(0, document.body.scrollHeight - window.innerHeight - 1);
+                const top = Math.min(Math.max(0, desiredTop), maxTop);
+
+                window.scrollTo({ top, behavior: 'smooth' });
+
+                let lastY = null, stableFrames = 0;
+                const TOLERANCE = 6;
+                const CHECK_FRAMES = 6;
+
+                const check = () => {
+                    const nowY = window.scrollY;
+                    if (Math.abs(nowY - top) <= TOLERANCE) {
+                    clearTimeout(programmaticTimer);
+                    programmaticTarget = null;
+                    return;
+                    }
+                    if (lastY === nowY) stableFrames++; else stableFrames = 0;
+                    lastY = nowY;
+                    if (stableFrames < CHECK_FRAMES) requestAnimationFrame(check);
+                    else { clearTimeout(programmaticTimer); programmaticTarget = null; }
+                };
+                requestAnimationFrame(check);
             };
 
             const openPicker = () => {
@@ -167,7 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (isAtTop()) { const e = dateEls()[0]; if (e) { setTitle(getYear(e)); programmaticTarget = null; return; } }
 
                     if (programmaticTarget) {
-                        const intendedEntry = entries.find(en => getYear(en.target) === programmaticTarget && en.isIntersecting);
+                        const checkpoint = window.innerHeight * 0.6;
+                        const intendedEntry = entries.find(en => {
+                            if (getYear(en.target) !== programmaticTarget) return false;
+                            const r = en.target.getBoundingClientRect();
+                            return en.isIntersecting || (r.top <= checkpoint && r.bottom >= 0) || (r.top <= window.innerHeight * 0.75);
+                        });
                         if (intendedEntry) {
                             setTitle(programmaticTarget);
                             clearTimeout(programmaticTimer);
@@ -190,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (isAtBottom()) { setTitle(BOTTOM_YEAR); programmaticTarget = null; return; }
                     if (isAtTop()) { const e = dateEls()[0]; if (e) { setTitle(getYear(e)); programmaticTarget = null; return; } }
                 }, { passive: true });
+
             } else {
                 let ticking = false;
                 const onScroll = () => {
@@ -200,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (isAtTop()) { const e = dateEls()[0]; if (e) { setTitle(getYear(e)); programmaticTarget = null; ticking = false; return; } }
                         if (programmaticTarget) { ticking = false; return; }
 
-                        const cp = window.innerHeight * .6;
+                        const cp = window.innerHeight * 0.6;
                         for (const el of dateEls()) {
                             const r = el.getBoundingClientRect();
                             if (r.top <= cp && r.bottom >= cp) { setTitle(getYear(el)); ticking = false; return; }
