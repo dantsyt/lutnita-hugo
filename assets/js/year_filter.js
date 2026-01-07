@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } else if (year === BOTTOM_YEAR) {
-                    window.scrollTo({ top: document.body.scrollHeight-750, behavior: 'smooth' });
+                    window.scrollTo({ top: document.body.scrollHeight-770, behavior: 'smooth' });
                 }
                 setTitle(year);
             };
