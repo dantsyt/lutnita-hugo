@@ -1,7 +1,7 @@
 ---
-date: '2025-12-04T18:34:20+03:00'
+date: '2026-01-07T18:50:20+03:00'
 title: Home
-description: 'Upcoming exhibition: Ana Avram, 12 Dec 2025 — 15 Feb 2026, Chișinău'
+description: 'Current exhibition: Ana Avram, 12 Dec 2025 — 15 Feb 2026, Chișinău'
 params:
   subtitle: Current
   class:
