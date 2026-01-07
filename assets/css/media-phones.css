@@ -56,7 +56,8 @@
         align-items: center;
         justify-content: space-between;
         position: sticky;
-        top: 4vh;
+        top: 4vh;        
+        margin-bottom: 0.5em;
         z-index: 999;
         background-color: white;
         font-family: 'Barlow', sans-serif;
