@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const getYear = el => el?.lastElementChild?.textContent.trim().slice(-4)
+    const getYear = el => el?.querySelector('.exhibition_date')?.textContent.trim().slice(-4)
     const wait = f => {
         let i = setInterval(() => {
             const ex = [...document.querySelectorAll('.text_container')]

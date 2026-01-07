@@ -19,6 +19,13 @@
         min-height: 4vh;
     }
 
+    .exhib_header {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background-color: white;
+    }
+
     main {
         flex-grow: 1;
         flex-direction: column;
@@ -42,6 +49,13 @@
     .title_menu {
         visibility: visible;
         font-size: 24rem;
+    }
+
+    .exhib_title {
+        position: sticky;
+        top: 4vh;
+        z-index: 999;
+        background-color: white;
     }
 
     h4:first-of-type {

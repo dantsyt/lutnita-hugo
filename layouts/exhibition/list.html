@@ -1,7 +1,7 @@
 {{- define "main" }}
     {{- $assetUrl := .Site.Params.assetUrl }}
     <section id="text_section" class="text_section">
-        <h2 id="title" class="title">{{ .Title }}</h2>
+        <h2 id="title" class="title exhib_title">{{ .Title }}</h2>
         {{- range .Pages }}
         {{- $data := .Params.data }}
         {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
