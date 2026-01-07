@@ -516,6 +516,16 @@
     .exhibition_date {
         scroll-margin-top: 28vh;
     }
+
+    .current_year,
+    .year-picker-list button {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: none;
+    }
 }
 
 /* Min-width: 320px (smaller phone viewpoints)
