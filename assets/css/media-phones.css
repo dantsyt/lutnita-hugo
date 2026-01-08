@@ -66,10 +66,12 @@
     .current_year {
         display: flex;
         color: #bdbdbd;
-        font-weight: 600;
+        font-weight: 400;
         line-height: unset;
         padding-bottom: 2em;
         margin-inline-end: 8vw;
+        font-family: 'grotesk', sans-serif;
+        transform: scaleY(1.05);
     }
 
     h4:first-of-type {
@@ -485,6 +487,9 @@
         opacity:0;
         transition: all 0.25s cubic-bezier(0.36, 0.74, 1, 0.99);
         pointer-events:none;
+        font-family: 'grotesk', sans-serif;
+        font-weight: 400;
+        transform: scaleY(1.05);
     }
     
     .year-picker.open {
@@ -496,7 +501,7 @@
     .year-picker-list {
         list-style:none;
         margin:0;
-        padding:6px;
+        padding:5px;
         max-height:55vh;
         overflow-y:auto
     }
@@ -505,8 +510,7 @@
         width:100%;
         text-align:left;
         padding:8px 10px;
-        color: #bdbdbd;        
-        font-weight:600;
+        color: #bdbdbd;
     }
     .year-picker-list button.active {
         color: #777;
