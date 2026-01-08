@@ -501,7 +501,7 @@
     .year-picker-list {
         list-style:none;
         margin:0;
-        padding:5px;
+        padding:5px 4px;
         max-height:55vh;
         overflow-y:auto
     }
