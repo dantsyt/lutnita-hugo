@@ -18,6 +18,7 @@ params:
         lastname: Brăila
     namepath:
       - svg: pavelbrailavols.svg
+        page: pavelbraila
     text: Vol. I
     date: '26 Sep 2025 — 16 Nov 2025'
     loc: Chișinău

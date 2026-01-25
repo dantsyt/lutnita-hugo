@@ -18,6 +18,7 @@ params:
         lastname: Brăila
     namepath:
       - svg: pavelbrailavols.svg
+        page: pavelbraila
     text: Vol. II
     date: '11 Oct 2025 — 16 Nov 2025'
     loc: Ustia
