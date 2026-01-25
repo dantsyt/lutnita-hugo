@@ -208,6 +208,8 @@
         margin-bottom: unset;
         padding-bottom: unset;
         margin-inline: 8vw;
+        padding-top: unset;
+        margin-top: 1em;
     }
 
     .exhib_link_mob:hover {
