@@ -1,0 +1,9 @@
+#Download from wetransfer:
+wedl
+
+#Convert to webp
+for img in *.png *.jpg *.JPG; do ffmpeg -i "$img" -vf "scale=1400:-1" -q:v 100 "../webps/${img%.*}.webp"; ffmpeg -i "$img" -vf "scale=450px:-1" -q:v 100 "../webps/mob/${img%.*}_450px.webp"; done
+
+#Upload to R2
+aws configure (region auto)
+aws s3 cp ./ s3://lutnita/img/<path> --recursive --endpoint-url $AWS_ENDPOINT_URL
