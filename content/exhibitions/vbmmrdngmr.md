@@ -42,6 +42,7 @@ params:
         page: markverlan
       - svg: empty.png
       - svg: braila.svg
+        page: pavelbraila
       - svg: rata.svg
       - svg: mardari.svg
       - svg: munteanurimnic.svg

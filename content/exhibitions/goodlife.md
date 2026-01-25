@@ -42,6 +42,7 @@ params:
       - svg: marinasulima.svg
       - svg: nikitakadan.svg
       - svg: pavelbraila.svg
+        page: pavelbraila
       - svg: ralucapopa.svg
       - svg: tatianafiodorova.svg
     date: '14 Sep 2024 — 28 Sep 2024'
