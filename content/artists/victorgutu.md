@@ -12,9 +12,8 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    artistname:
-      - firstname: victor
-        lastname: guțu
+    firstname: victor
+    lastname: guțu
     fullname: victorgutu
     namepath: victorgutu.svg
     images: 31

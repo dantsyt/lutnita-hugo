@@ -12,9 +12,8 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    artistname:
-      - firstname: alex
-        lastname: bodea
+    firstname: alex
+    lastname: bodea
     fullname: alexbodea
     namepath: bodea.svg
     images: 20

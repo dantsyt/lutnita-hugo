@@ -12,9 +12,8 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    artistname:
-      - firstname: anna
-        lastname: godzina
+    firstname: anna
+    lastname: godzina
     fullname: annagodzina
     namepath: godzina.svg
     images: 22

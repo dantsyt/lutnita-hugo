@@ -4,7 +4,7 @@
         <h2 id="title" class="title">{{ .Title }}</h2>
         <div id="list_wrapper">
             <div id="artist_list">
-            {{- range .Pages }}
+            {{- range .Pages.ByParam "data.lastname" }}
             {{ $data := .Params.data }}
                 <div id="{{ $data.fullname }}" class="text_container text_container_artists" onclick="location.assign('/artists/{{ $data.fullname }}')">
                     <p id="{{ $data.fullname }}" class="exhnamehidden"></p>

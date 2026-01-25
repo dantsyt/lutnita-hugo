@@ -12,9 +12,8 @@ params:
     - oneArtist.js
   isModule: true  
   data:
-    artistname:
-      - firstname: flaviu
-        lastname: cacoveanu
+    firstname: flaviu
+    lastname: cacoveanu
     fullname: flaviucacoveanu
     namepath: cacoveanu.svg
     images: 20
