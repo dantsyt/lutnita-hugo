@@ -20,8 +20,8 @@ params:
     captions:
       - |
         Another Noon
-        still from performance, Manifesta 
-        10, St. Petersburg, 2014
+        still from performance, Manifesta 10
+        St. Petersburg, 2014
       - |
         The first EU Passport
         intervention on document, 2005
@@ -35,9 +35,11 @@ params:
       - |
         Times When News Are Faster Than Bullets
         12 panels, acrylic on pressed newspapers, perforated with 9 mm bullets, 2024–2025
+        51 x 35 cm
       - |
         Times When News Are Faster Than Bullets
         12 panels, acrylic on pressed newspapers, perforated with 9 mm bullets, 2024–2025
+        45 x 35 cm
       - |
         Peace is When They are Shooting Somewhere Else
         acrylic on paper, bullet holes, 2024 
@@ -54,7 +56,8 @@ params:
         still from video, 35’, 2017
       - |
         I Really Miss Dancing
-        neon tubes and plexiglas 77 cm in diameter, 2021
+        neon tubes and plexiglas, 2021
+        ø 77 cm
       - |
         Ink Ribbon Fingerprints
         still from performance,7’9”, 2012
@@ -73,21 +76,21 @@ params:
         still from video, 26’, 2002
       - |
         Gedankenaufnahme
-        video still, filming during performance, 8’37”, 2001
+        still from video, filming during performance, 8’37”, 2001
       - |
         Fresh News
         still from video projected on 24 working fans, 30min on loop, 2010
         Exhibition view, Union of Writers, Chișinău, 2010
       - |
         Recalling Events 
-        still from filming during the performance, 4’, 2001
+        still from video, filming during performance, 4’, 2001
       - |
         Solar Flower
         installation from mirror, metal stalk, helliotrekers, 2015
         various dimensions
       - |
         Cold Painting
-        still from video, 15’45”, 2014
+        still from video, filming during performance, 15’45”, 2014
         Manifesta 10, St. Petersburg
       - |
         Fragile Podil
