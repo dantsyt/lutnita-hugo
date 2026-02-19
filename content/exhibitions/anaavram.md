@@ -19,7 +19,7 @@ params:
     namepath: 
       - svg: anaavram.svg
         page: anaavram
-    date: '12 Dec 2025 — 15 Feb 2026'
+    date: '12 Dec 2025 — 22 Feb 2026'
     images: 23
     captions:
       - |

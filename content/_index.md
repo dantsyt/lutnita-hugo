@@ -1,7 +1,7 @@
 ---
 date: '2026-01-07T18:50:20+03:00'
 title: Home
-description: 'Current exhibition: Ana Avram, 12 Dec 2025 — 15 Feb 2026, Chișinău'
+description: 'Current exhibition: Ana Avram, 12 Dec 2025 — 22 Feb 2026, Chișinău'
 params:
   subtitle: Current
   class:
@@ -17,6 +17,6 @@ params:
         lastname: Avram
     namepath: 
       - anaavram.svg
-    date: '12 Dec 2025 — 15 Feb 2026'
+    date: '12 Dec 2025 — 22 Feb 2026'
     image: bug.webp
 ---
