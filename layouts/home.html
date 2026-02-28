@@ -18,12 +18,11 @@
       <h4 class="exhibition_date">{{ $data.date }}</h4>
       </div>
       <div class="image_container_mob_index">
-        <!-- REMOVE bug id after anaavram -->
-        <img id="bug" class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+        <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
       </div>
     </div>
   </section>
-  <section class="image_container"><img id="bug" class="center_image_index"
+  <section class="image_container"><img class="center_image_index"
         src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}"
         onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
   </section>

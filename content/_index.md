@@ -1,9 +1,9 @@
 ---
-date: '2026-01-07T18:50:20+03:00'
+date: '2026-02-28T20:24:20+03:00'
 title: Home
-description: 'Current exhibition: Ana Avram, 12 Dec 2025 — 22 Feb 2026, Chișinău'
+description: 'Upcoming exhibition: Mark Verlan, 6 Mar 2026 — 10 May 2026, Chișinău'
 params:
-  subtitle: Current
+  subtitle: Upcoming
   class:
     html: full_height
     body: full_body
@@ -11,12 +11,12 @@ params:
   scripts:
     - menu_index.js
   data:
-    exhibname: anaavram
+    exhibname: 
     artistname:
-      - firstname: Ana
-        lastname: Avram
+      - firstname: Mark
+        lastname: Verlan
     namepath: 
-      - anaavram.svg
-    date: '12 Dec 2025 — 22 Feb 2026'
-    image: bug.webp
+      - verlan.svg
+    date: '6 Mar 2026 — 10 May 2026'
+    image: markverlandrawings.webp
 ---
