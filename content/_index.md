@@ -1,9 +1,9 @@
 ---
 date: '2026-02-28T20:24:20+03:00'
 title: Home
-description: 'Upcoming exhibition: Mark Verlan, 6 Mar 2026 — 10 May 2026, Chișinău'
+description: 'Current exhibition: Mark Verlan, 6 Mar 2026 — 10 May 2026, Chișinău'
 params:
-  subtitle: Upcoming
+  subtitle: Current
   class:
     html: full_height
     body: full_body
