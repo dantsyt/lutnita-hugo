@@ -2,7 +2,7 @@
 wedl
 
 #Convert to webp
-for img in *.png *.jpg *.JPG; do ffmpeg -i "$img" -vf "scale=1400:-1" -q:v 100 "../webps/${img%.*}.webp"; ffmpeg -i "$img" -vf "scale=450px:-1" -q:v 100 "../webps/mob/${img%.*}_450px.webp"; done
+for img in *.png *.jpg *.jpeg *.JPG; do ffmpeg -i "$img" -vf "scale=1400:-1" -q:v 100 "../webps/${img%.*}.webp"; ffmpeg -i "$img" -vf "scale=450:-1" -q:v 100 "../webps/mob/${img%.*}_450px.webp"; done
 
 #Upload to R2
 aws configure (region auto)
