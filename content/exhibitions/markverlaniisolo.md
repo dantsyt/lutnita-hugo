@@ -37,9 +37,7 @@ params:
       - |
         Exhibition view
       - |
-        Mandavoshki Yusok Makrachampra and Chukmasan Mbykuok, on Vacation, Southern
-        District, Phe-Chong
-        Province. Early 21st Century A.D.
+        Mandavoshki Yusok Makrachampra and Chukmasan Mbykuok, on Vacation, Southern District, Phe-Chong Province. Early 21st Century A.D.
         oil on canvas, 2018
         53 x 40 x 3 cm
       - |
