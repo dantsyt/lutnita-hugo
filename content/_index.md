@@ -11,12 +11,12 @@ params:
   scripts:
     - menu_index.js
   data:
-    exhibname: 
+    exhibname: markverlaniisolo
     artistname:
       - firstname: Mark
         lastname: Verlan
     namepath: 
       - verlan.svg
     date: '6 Mar 2026 — 10 May 2026'
-    image: markverlandrawings.webp
+    image: markverlaniisolo.webp
 ---
