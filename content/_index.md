@@ -1,9 +1,9 @@
 ---
-date: '2026-02-28T20:24:20+03:00'
+date: '2026-05-26T20:55:20+03:00'
 title: Home
-description: 'Current exhibition: Mark Verlan, 6 Mar 2026 — 10 May 2026, Chișinău'
+description: 'Upcoming exhibition: Lică Sainciuc, 5 Jun 2026 — 31 Jul 2026, Chișinău'
 params:
-  subtitle: Current
+  subtitle: Upcoming
   class:
     html: full_height
     body: full_body
@@ -11,12 +11,12 @@ params:
   scripts:
     - menu_index.js
   data:
-    exhibname: markverlaniisolo
+    exhibname: 
     artistname:
-      - firstname: Mark
-        lastname: Verlan
+      - firstname: Lică
+        lastname: Sainciuc
     namepath: 
-      - verlan.svg
-    date: '6 Mar 2026 — 10 May 2026'
-    image: markverlaniisolo.webp
+      - licasainciuc.svg
+    date: '5 Jun 2026 — 31 Jul 2026'
+    image: licasainciuc.webp
 ---
