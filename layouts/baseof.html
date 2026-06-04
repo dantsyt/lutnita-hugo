@@ -1,6 +1,6 @@
 {{- $assetUrl := $.Site.Params.assetUrl }}
 <!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}" class="{{ .Params.class.html }}">
+<html lang="{{ site.Language.Locale }}" dir="{{ or site.Language.Direction `ltr` }}" class="{{ .Params.class.html }}">
 <head>
   {{ partial "head" . }}
 </head>

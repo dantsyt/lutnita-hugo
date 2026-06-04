@@ -1,5 +1,5 @@
 baseURL: 'https://www.lutnita.md/'
-languageCode: 'en-us'
+locale: 'en-us'
 title: 'L U T N I Ț A'
 
 disableKinds: ["taxonomy"]
