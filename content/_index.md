@@ -1,9 +1,9 @@
 ---
-date: '2026-05-26T20:55:20+03:00'
+date: '2026-06-05T20:47:20+03:00'
 title: Home
-description: 'Upcoming exhibition: Lică Sainciuc, 5 Jun 2026 — 31 Jul 2026, Chișinău'
+description: 'Current exhibition: Lică Sainciuc, 5 Jun 2026 — 31 Jul 2026, Chișinău'
 params:
-  subtitle: Upcoming
+  subtitle: Current
   class:
     html: full_height
     body: full_body
