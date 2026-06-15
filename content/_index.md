@@ -11,7 +11,7 @@ params:
   scripts:
     - menu_index.js
   data:
-    exhibname: 
+    exhibname: licasainciuc
     artistname:
       - firstname: Lică
         lastname: Sainciuc
