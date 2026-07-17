@@ -7,3 +7,6 @@ for img in *.png *.jpg *.jpeg *.JPG; do ffmpeg -i "$img" -vf "scale=1400:-1" -q:
 #Upload to R2
 aws configure (region auto)
 aws s3 cp ./ s3://lutnita/img/<path> --recursive --endpoint-url $AWS_ENDPOINT_URL
+
+#date
+date +"%Y-%m-%dT%H:%M:%S%z" | sed 's/\([+-][0-9][0-9]\)\([0-9][0-9]\)$/\1:\2/'

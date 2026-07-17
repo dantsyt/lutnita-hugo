@@ -1,0 +1,42 @@
+{{- define "main" }}
+{{- $assetUrl := .Site.Params.assetUrl }}
+<section id="text_section" class="text_section">
+    <div class="exhib_title">
+        <h2 id="title" class="title">{{ .Title }}</h2>
+    </div>
+    {{- range .Pages }}
+    {{- $data := .Params.data }}
+    {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
+    <div id="{{ $data.fairname }}" class="text_container text_container_fairs"
+        onclick="location.assign('/fairs/{{ $data.fairname }}')">
+        <p id="{{ $data.fairname }}" class="exhnamehidden"></p>
+        <h5 id="fair_name">{{ .Title }}</h5>
+        <div class="names_wrapper">
+            {{- $name := $data.namepath }}
+            {{- range $name }}
+            <div class="names_container">
+                <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ .svg }}">
+            </div>
+            {{- end }}
+        </div>
+        <h4 class="exhibition_date">{{ $data.date }}</h4>
+    </div>
+    <div class="image_container_mob">
+        <img class="center_image_mob" src="{{ $assetUrl }}/img/fairs/{{ $data.fairname }}.webp" alt="{{ $artistNames }}"
+            onclick="location.assign('/fairs/{{ $data.fairname }}')">
+    </div>
+    {{- end }}
+</section>
+{{- $firstpage := index .Pages 0 }}
+{{- $data := $firstpage.Params.data }}
+{{- $fairname :=$data.fairname }}
+{{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
+<section class="image_container"><img class="center_image_exhib" src="{{ $assetUrl }}/img/fairs/{{ $fairname }}.webp"
+        alt="{{ $artistNames }}" onclick="location.assign('/fairs/{{ $fairname }}')">
+</section>
+<section class="right_space"></section>
+{{ end }}
+
+{{ define "scripts" }}
+{{ partial "assets/js" . }}
+{{ end }}

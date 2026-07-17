@@ -150,6 +150,21 @@ h4 {
     margin-inline-start: 2em;
 }
 
+.text_container_fairs {
+    padding-top: 1em;
+    margin-top: 1em;
+}
+
+#fair_name {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    transform: scaleY(1.05);
+    margin-bottom: 2em;
+    font-size: 16rem;
+    color: #555;
+}
+
 .upcoming {
     padding-top: 4vh;
 }
@@ -165,7 +180,7 @@ h4 {
     flex-direction: row-reverse;
 }
 
-.vols_wrapper, 
+.vols_wrapper,
 .vol_wr_nohover {
     border: 1px solid #ffffff;
     border-left: none;
