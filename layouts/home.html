@@ -6,15 +6,14 @@
 <section id="text_section" class="text_section">
   <h2 class="title">{{ .Params.subtitle }}</h2>
   <div class="text_container" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
-    <!--<div class="names_wrapper">
-        {{- $name := $data.namepath }}
-        {{- range $name }}
-        <div class="names_container">
-          <img class="artist_name"
-              src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
-        </div>
+    <div class="names_wrapper">
+      {{- $name := $data.namepath }}
+      {{- range $name }}
+      <div class="names_container">
+        <img class="artist_name" src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
       </div>
-      {{- end }}-->
+    </div>
+    {{- end }}
     <h4 class="exhibition_date">{{ $data.date }}</h4>
   </div>
   <div class="image_container_mob_index">

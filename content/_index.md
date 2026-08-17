@@ -1,9 +1,9 @@
 ---
 date: '2026-08-17T22:48:28+03:00'
 title: Home
-description: 'Vacation | 5 Jun 2026 — 31 Jul 2026, Chișinău'
+description: 'Vacation | 1 Aug 2026 — 10 Sep 2026, Chișinău'
 params:
-  subtitle: Vacation
+  subtitle: Current
   class:
     html: full_height
     body: full_body
@@ -16,7 +16,7 @@ params:
       - firstname: Vacation
         lastname: 
     namepath: 
-      - empty.png
+      - vacation.svg
     date: '1 Aug 2026 — 10 Sep 2026'
     image: vacation.webp
 ---
