@@ -1,12 +1,12 @@
 {{- define "main" }}
-  {{- $assetUrl := .Site.Params.assetUrl }}
-  {{- $data := .Params.data }}
-  {{- $image := $data.image }}
-  {{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
-  <section id="text_section" class="text_section">
-    <h2 class="title">{{ .Params.subtitle }}</h2>
-    <div class="text_container" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
-      <div class="names_wrapper">
+{{- $assetUrl := .Site.Params.assetUrl }}
+{{- $data := .Params.data }}
+{{- $image := $data.image }}
+{{- $artistNames := partial "spec/artistnames.html" (dict "artistNameSource" $data.artistname) }}
+<section id="text_section" class="text_section">
+  <h2 class="title">{{ .Params.subtitle }}</h2>
+  <div class="text_container" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+    <!--<div class="names_wrapper">
         {{- $name := $data.namepath }}
         {{- range $name }}
         <div class="names_container">
@@ -14,21 +14,21 @@
               src="{{ $assetUrl }}/img/exhibitions/namepaths/{{ . }}">
         </div>
       </div>
-      {{- end }}
-      <h4 class="exhibition_date">{{ $data.date }}</h4>
-      </div>
-      <div class="image_container_mob_index">
-        <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
-      </div>
-    </div>
-  </section>
-  <section class="image_container"><img class="center_image_index"
-        src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}"
-        onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
-  </section>
-  <section class="right_space"></section>
+      {{- end }}-->
+    <h4 class="exhibition_date">{{ $data.date }}</h4>
+  </div>
+  <div class="image_container_mob_index">
+    <img class="center_image_mob" src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}" alt="{{ $artistNames }}"
+      onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+  </div>
+  </div>
+</section>
+<section class="image_container"><img class="center_image_index" src="{{ $assetUrl }}/img/exhibitions/{{ $data.image }}"
+    alt="{{ $artistNames }}" onclick="location.assign('/exhibitions/{{ $data.exhibname }}')">
+</section>
+<section class="right_space"></section>
 {{ end -}}
 
 {{- define "scripts" -}}
-  {{- partial "assets/js" . }}
+{{- partial "assets/js" . }}
 {{- end -}}

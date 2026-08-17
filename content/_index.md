@@ -1,9 +1,9 @@
 ---
-date: '2026-06-05T20:47:20+03:00'
+date: '2026-08-17T22:48:28+03:00'
 title: Home
-description: 'Current exhibition: Lică Sainciuc, 5 Jun 2026 — 31 Jul 2026, Chișinău'
+description: 'Vacation | 5 Jun 2026 — 31 Jul 2026, Chișinău'
 params:
-  subtitle: Current
+  subtitle: Vacation
   class:
     html: full_height
     body: full_body
@@ -11,12 +11,12 @@ params:
   scripts:
     - menu_index.js
   data:
-    exhibname: licasainciuc
+    exhibname: 
     artistname:
-      - firstname: Lică
-        lastname: Sainciuc
+      - firstname: Vacation
+        lastname: 
     namepath: 
-      - licasainciuc.svg
-    date: '5 Jun 2026 — 31 Jul 2026'
-    image: licasainciuc.webp
+      - empty.png
+    date: '1 Aug 2026 — 10 Sep 2026'
+    image: vacation.webp
 ---
