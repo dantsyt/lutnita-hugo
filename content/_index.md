@@ -1,9 +1,9 @@
 ---
-date: '2026-08-17T22:48:28+03:00'
+date: '2026-09-06T23:53:01+03:00'
 title: Home
-description: 'Vacation | 1 Aug 2026 — 10 Sep 2026, Chișinău'
+description: 'Group Exhibition | 11 Sep 2026 — 8 Nov 2026, Chișinău'
 params:
-  subtitle: Current
+  subtitle: Upcoming
   class:
     html: full_height
     body: full_body
@@ -13,10 +13,34 @@ params:
   data:
     exhibname: 
     artistname:
-      - firstname: Vacation
-        lastname: 
-    namepath: 
-      - vacation.svg
-    date: '1 Aug 2026 — 10 Sep 2026'
-    image: vacation.webp
+      - firstname: Ana
+        lastname: Avram
+      - firstname: Pavel
+        lastname: Brăila
+      - firstname: Flaviu 
+        lastname: Cacoveanu
+      - firstname: Camilia
+        lastname: Filipov
+      - firstname: Ion
+        lastname: Grigorescu
+      - firstname: Doina
+        lastname: Mardari
+      - firstname: Ciprian
+        lastname: Mureșan
+      - firstname: Ghenadie
+        lastname: Popescu
+      - firstname: Mark
+        lastname: Verlan
+    namepath:
+      - anaavram_sept.svg
+      - pavelbraila_sept.svg
+      - flaviucacoveanu_sept.svg
+      - camiliafilipov_sept.svg
+      - iongrigorescu_sept.svg
+      - doinamardari_sept.svg
+      - ciprianmuresan_sept.svg
+      - ghenadiepopescu_sept.svg
+      - markverlan_sept.svg
+    date: '11 Sep 2026 — 8 Nov 2026'
+    image: sept2026.webp
 ---
