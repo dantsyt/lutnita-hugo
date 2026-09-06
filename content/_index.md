@@ -36,6 +36,7 @@ params:
       - pavelbraila_sept.svg
       - flaviucacoveanu_sept.svg
       - camiliafilipov_sept.svg
+      - empty_w.png
       - iongrigorescu_sept.svg
       - doinamardari_sept.svg
       - ciprianmuresan_sept.svg

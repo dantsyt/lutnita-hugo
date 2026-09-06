@@ -47,3 +47,5 @@ if (!window.Source.media.matches) {
         body.addEventListener('mousestart', displayNavBar, { once: true })
     })
 }
+
+document.querySelector('img[src$="empty_w.png"]').id = 'empty_w'
