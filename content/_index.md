@@ -3,7 +3,7 @@ date: '2026-09-06T23:53:01+03:00'
 title: Home
 description: 'Group Exhibition | 11 Sep 2026 — 8 Nov 2026, Chișinău'
 params:
-  subtitle: Upcoming
+  subtitle: Current
   class:
     html: full_height
     body: full_body
