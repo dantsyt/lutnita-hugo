@@ -1,11 +1,11 @@
 import { captions, captionsArr } from "./exhib/utils/data"
 import { mob, image } from "./exhib/utils/mob"
 import { detectSwipe } from "./exhib/utils/swipe"
-import { 
-    preloadNextImage, 
-    preloadPrevImage, 
-    initNextImageUrl, 
-    initPrevImageUrl 
+import {
+    preloadNextImage,
+    preloadPrevImage,
+    initNextImageUrl,
+    initPrevImageUrl
 } from "./exhib/utils/imgPreload"
 import { nextImage, prevImage } from "./exhib/utils/imgHandler"
 import { sendLog } from "./exhib/utils/log"
@@ -16,6 +16,7 @@ import { vbmmrdngmr } from "./exhib/specials/vbmmrdngmr"
 import { svitlosalome } from "./exhib/specials/svitlosalome"
 import { doinamardari } from "./exhib/specials/doinamardari"
 
+document.querySelector('img[src$="empty_w.png"]').id = 'empty_w'
 document.querySelector('footer').style.backgroundColor = 'unset'
 captions.innerText = captionsArr[0]
 
@@ -56,7 +57,7 @@ detectSwipe(image, function (direction) {
 })
 
 let special = document.querySelector('.text_container_nohover').id
-switch(special) {
+switch (special) {
     case "vbmmrdngmr":
         vbmmrdngmr()
         break

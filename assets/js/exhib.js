@@ -11,6 +11,9 @@ for (let name of names) {
         }
     })
 }
+
+document.querySelector('img[src$="empty_w.png"]').id = 'empty_w'
+
 if (document.querySelector('#winter')) {
     const emptyContainer = document.querySelector('#winter > div.names_wrapper').children
     emptyContainer[7].id = 'empty_w'

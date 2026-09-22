@@ -11,7 +11,7 @@ params:
   scripts:
     - menu_index.js
   data:
-    exhibname: 
+    exhibname: 11-09-26
     artistname:
       - firstname: Ana
         lastname: Avram
