@@ -16,7 +16,9 @@ import { vbmmrdngmr } from "./exhib/specials/vbmmrdngmr"
 import { svitlosalome } from "./exhib/specials/svitlosalome"
 import { doinamardari } from "./exhib/specials/doinamardari"
 
-document.querySelector('img[src$="empty_w.png"]').id = 'empty_w'
+if (document.getElementById('11-09-26')) {
+    document.querySelector('img[src$="empty_w.png"]').id = 'empty_w'
+}
 document.querySelector('footer').style.backgroundColor = 'unset'
 captions.innerText = captionsArr[0]
 
